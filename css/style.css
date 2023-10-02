@@ -60,6 +60,13 @@ h1 {
     
 }
 
+.photographerPageLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
 .portraitBox {
     display:flex;
     justify-content: center;
