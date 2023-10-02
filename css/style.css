@@ -5,6 +5,7 @@
 :root {
     --primary-color : #D3573C;
     --secondary-color: #901C1C;
+    --tertiary-color : #DB8876;
     
 }
 * {
@@ -43,14 +44,14 @@ h1 {
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographersSection {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographerArticle {
     
     justify-self: center;
     display: flex;
@@ -64,6 +65,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
 
 }
 
@@ -105,5 +107,44 @@ h1 {
     font-size: 9px;
 }
 
+/************  photographerPage ************/
 
+main {
+    position: relative;
+}
+
+.photographerHeader {
+    position: relative;
+}
+
+.photographerHeader  .contact_button {
+    position: relative;
+    top:50%;
+    left: 50%;
+
+}
+
+#photographerHeader .photographerArticle {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.photographerInfoBox {
+    width: 370px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+
+    background: var(--tertiary-color);
+}
+.photographerPrice {
+
+    font-size: large;
+    font-weight: 500;
+}
 

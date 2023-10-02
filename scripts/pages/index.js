@@ -42,31 +42,28 @@
     //         photographers: [...photographers]})
     // }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographersSection");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+    photographers.forEach((photographer) => {
+        const photographerModel = indexPagePhotographerTemplate(photographer);
+        const userCardDOM = photographerModel.createPhotographerCard();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
 
-    async function init() {
-        // Récupère les datas des photographes
-        //!
-        // const { photographers } = await getPhotographers();
-        // displayData(photographers);
+async function init() {
+    // Récupère les datas JSON concernant les photographes (Array "photographers")
 
-fetch("./data/photographers.json")
-	.then(response => {
-		return response.json()
-	})
-	.then(myData => {
-		displayData(myData.photographers);
-	})
-};
-
+    fetch("./data/all_data.json")
     
-    init();
+        .then((response) => {
+            return response.json()
+        })
+        .then((allJsonData) => {
+            displayData(allJsonData.photographers);
+        })
+};
+    
+init();
     
