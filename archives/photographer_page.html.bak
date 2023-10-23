@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <!-- ! Ajout du meta viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <title>Fisheye - photographe </title>
+    <script src="scripts/templates/photographerWIPcopy.js" defer></script>
+    <script src="scripts/pages/photographerPage.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="./index.html" ><img src="assets/images/logo.png" alt="logo de Fisheye"  class="logo"></a>
+      
+    </header>
+    <main id="main">
+      <!-- !div remplacée par section -->
+      <section id="photographerHeader" class="photographerHeader">
+        <!--! A remplacer per un listener  -->
+        <button class="contact_button"
+        onclick="displayModal()">Contactez-moi</button>
+      </section>
+    </main>
+    <section id="contact_modal">
+			<div class="modal">
+				<header>
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" alt="bouton de fermeture de la fenêtre modale" onclick="closeModal()" >
+        </header>
+				<form>
+					<div>
+						<label for="prenom">Prénom</label>
+						<input id="prenom">
+					</div>
+          <button class="contact_button" type="submit">Envoyer</button>
+				</form>
+			</div>
+		</section>
+  </body>
+</html>

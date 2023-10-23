@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <!-- ! Ajout du meta viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <!-- ! Mise des liens script dans le head avec defer -->
+     <script src="scripts/templates/photographer.js" defer></script>
+    <script src="scripts/pages/index.js" defer></script>
+    <title>Fisheye</title>
+  </head>
+  <body>
+    <header>
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
+        <h1>Nos photographes</h1>
+    </header>
+    <main id="main">
+        <div class="photographersSection"></div> 
+    </main>
+
+   
+  </body>
+</html>
