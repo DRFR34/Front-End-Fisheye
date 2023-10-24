@@ -1,49 +1,80 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
-
 // récupération de l'id du photographe dans l'URL
 const urlSearch = window.location.search;
-        console.log(urlSearch); // => "?id=XXX"
 
-// suppression des 4 premiers caractères superflus
-// const urlId = urlSearch.slice(4);
-// console.log(urlId); // => "XXX"
+const urlParams = new URLSearchParams(urlSearch);
 
-// Emeric ,
-const  xx = new URLSearchParams(urlSearch);
-console.log(xx.values());
-const urlId = xx.get('id');
-console.log(urlId);
+const urlId = urlParams.get('id');
 
 
+async function getPhotographersData() {
+    try {
+        const response = await fetch("./data/all_data.json");
+        const allJsonData = await response.json();
+        selectAndInsertPhotographerInDom(allJsonData.photographers);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+    }
+}
+getPhotographersData();
 
 
+let totalOfLikes;
 
-
-
-async function displayData(photographers) {
+function selectAndInsertPhotographerInDom(photographers) {
     const photographersSection = document.querySelector(".photographerHeader");
-
     photographers.forEach((photographer) => {
         if (photographer.id == urlId) {
-           const photographerModel = photographerPagePhotographerTemplate(photographer);
-        const photographerCard = photographerModel.createPhotographerCard();
-        photographersSection.appendChild(photographerCard); 
-    }
-        
+            const photographerBanner = createPhotographerBanner(photographer);
+            photographersSection.appendChild(photographerBanner);
+        }
     });
+    
+    const displayedLikesList = document.querySelectorAll('.mediaLikes');
+    let totalOfLikes = 0;
+    displayedLikesList.forEach(displayedLikes => {
+        const likes = parseInt(displayedLikes.textContent);
+        if (!isNaN(likes)) {
+            totalOfLikes += likes;
+        }
+    });
+        console.log("totalOfLikes : ", totalOfLikes)
+        return totalOfLikes;
 }
-async function init() {
-    // Récupère les datas JSON concernant les photographes (Array "photographers")
+    
 
-    fetch("./data/all_data.json")
+
+console.log("totalOfLikes : ", totalOfLikes)
+
+
+// async function getMediasData(){const response = await fetch('....'); }
+
+async function getMediasData() {
+    try {
+        const response = await fetch("./data/all_data.json");
+        const allJsonData = await response.json();
+        selectAndInsertMediaInDom(allJsonData.media);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+    }
+}
+getMediasData();
+
+
+function selectAndInsertMediaInDom(media) {
+    const mediaDisplayGrid = document.querySelector("#mediaDisplayGrid");
+    media.forEach((medium) => {
+        if (medium.photographerId == urlId) {
+            try {
+                const mediaCard = MediaFactory.createMediaCard(medium);
+                mediaDisplayGrid.appendChild(mediaCard);                
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    });
+
+}
     
-        .then((response) => {
-            return response.json()
-        })
-        .then((allJsonData) => {
-            displayData(allJsonData.photographers);
-        })
-};
-    
-init();
+
+

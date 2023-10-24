@@ -9,23 +9,47 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-    <script src="scripts/templates/photographer.js" defer></script>
+    <script src="scripts/templates/photographersTemplates.js" defer></script>
+    <script src="scripts/templates/mediasTemplates.js" defer></script>
     <script src="scripts/pages/photographerPage.js" defer></script>
+    <script src="scripts/utils/likesProcessing.js"></script>
+    <script src="scripts/factories/mediaFactory.js"></script>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" alt="logo de Fisheye"  class="logo">
+      <a href="./index.html" ><img src="assets/images/logo.png" alt="logo de Fisheye"  class="logo"></a>
       
     </header>
     <main id="main">
       <!-- !div remplacée par section -->
       <section id="photographerHeader" class="photographerHeader">
         <!--! A remplacer per un listener  -->
-        <button class="contact_button"
+        <button class="contactButton"
         onclick="displayModal()">Contactez-moi</button>
       </section>
+      <section id="portfolioSorters">
+        <h2>Trier Par</h2>
+        <div id="SortingDropdown" >
+            <div id="SortingDropdownIconBox">></div>
+            <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
+                <li>Popularité</li>
+                <li>Date</li>
+                <li>Titre</li>
+            </ul>
+        </div>
+    </section>
+  
+      <section id="portfolioSection">
+        <div id="mediaDisplayGrid"></div>
+        <aside id="priceAndTotalLikesBox">
+          <span id="totalLikes"> </span>
+          <span id="totalLikesIco">&hearts;</span>
+          <span id="priceBox" ></span>
+        </aside>
+
+      </section>
     </main>
-    <section id="contact_modal">
+    <section id="contactModal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
