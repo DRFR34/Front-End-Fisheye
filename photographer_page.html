@@ -9,41 +9,48 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
+    <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script> 
+    <script src="scripts/pages/photographerPage.js" defer></script>
     <script src="scripts/templates/photographersTemplates.js" defer></script>
     <script src="scripts/templates/mediasTemplates.js" defer></script>
-    <script src="scripts/pages/photographerPage.js" defer></script>
-    <script src="scripts/utils/likesProcessing.js"></script>
-    <script src="scripts/factories/mediaFactory.js"></script>
+    <script src="scripts/factories/mediaFactory.js" defer></script>
+    <script src="scripts/utils/likesProcessing.js" defer></script>
+    <script src="scripts/utils/sortProcessing.js" defer></script>
+    <script src="scripts/utils/contactForm.js" defer></script>
+    <script src="scripts/utils/lightbox.js" defer></script>
+
   </head>
   <body>
     <header>
-      <a href="./index.html" ><img src="assets/images/logo.png" alt="logo de Fisheye"  class="logo"></a>
+      <a href="./index.html" class="invisible">Lien vers la page d'accueil<img class="logo" src="assets/images/logo.png" alt="logo de Fisheye" role="Image link" ></a>
       
     </header>
     <main id="main">
       <!-- !div remplacée par section -->
       <section id="photographerHeader" class="photographerHeader">
-        <!--! A remplacer per un listener  -->
-        <button class="contactButton"
-        onclick="displayModal()">Contactez-moi</button>
+        <!--! A remplacer par un listener  -->
+        <!-- <button class="contactButton" onclick="displayModal()">Contactez-moi</button> -->
+        <button class="contactButton" role="button">Contactez-moi</button>
       </section>
       <section id="portfolioSorters">
         <h2>Trier Par</h2>
-        <div id="SortingDropdown" >
+        <div id="SortingDropdown" role="listbox" aria-label="menu des tris" tabindex="0">
             <div id="SortingDropdownIconBox">></div>
             <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
-                <li>Popularité</li>
-                <li>Date</li>
-                <li>Titre</li>
+                <li role="listitem" tabindex="0">Popularité</li>
+                <li role="listitem" tabindex="0">Date</li>
+                <li role="listitem" tabindex="0">Titre</li>
             </ul>
         </div>
     </section>
   
       <section id="portfolioSection">
-        <div id="mediaDisplayGrid"></div>
-        <aside id="priceAndTotalLikesBox">
-          <span id="totalLikes"> </span>
-          <span id="totalLikesIco">&hearts;</span>
+        <div id="mediaDisplayGrid" role="grid"></div>
+        <aside id="priceAndTotalLikesBox" role="complementary">
+          <div id="totalLikesBox">
+            <span id="totalLikes"> </span>
+            <span id="totalLikesIco"><i class="fa-solid fa-heart"></i></span>
+          </div>
           <span id="priceBox" ></span>
         </aside>
 
@@ -53,14 +60,23 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
+          <div>Nom du Photographe</div>
           <img src="assets/icons/close.svg" alt="bouton de fermeture de la fenêtre modale" onclick="closeModal()" >
         </header>
 				<form>
-					<div>
+					
 						<label for="prenom">Prénom</label>
-						<input id="prenom">
-					</div>
-          <button class="contact_button" type="submit">Envoyer</button>
+						<input id="prenom" type="text" required>
+
+						<label for="nom">Nom</label>
+						<input id="nom" name="nom" type="text" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="84" rows="10"></textarea>
+					
+          <button class="submitButton" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</section>
