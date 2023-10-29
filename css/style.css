@@ -15,12 +15,17 @@
     margin: 0;
     padding: 0;
 }
-
+*:focus
+{
+    transform : scale(1.2);
+    border: solid 2px var(--secondary-color)
+}
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0 auto;
     max-width: 1440px;
+    height: 100%;
 }
 
 
@@ -39,7 +44,9 @@ h1 {
     color: var(--secondary-color);
     
 }
-
+.invisible {
+    font-size: 0;
+}
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -68,6 +75,12 @@ h1 {
     align-items: center;
     text-decoration: none;
 
+}
+.photographerPageLink:focus {
+    background-color: var(--secondary-color);
+}
+.photographerPageLink:focus .photographerName {
+    color: white;
 }
 
 .portraitBox {
@@ -174,13 +187,17 @@ h1 {
     color: white;
 }
 
-#SortingDropdown:active {
+#SortingDropdown:hover,
+#SortingDropdown:focus,
+#SortingDropdown:focus-within
+{
     height: auto;
 
 }
 
-#SortingDropdown:active #SortingDropdownIconBox{
-    transform: rotate(90deg);
+
+#SortingDropdown:hover #SortingDropdownIconBox{
+    transform: rotate(-90deg);
 }
 
 #SortingDropdownIconBox {
@@ -190,6 +207,7 @@ h1 {
     line-height: 50px;
     padding: 0 15px;
     font-size: 30px;
+    background-color: var(--secondary-color);
 }
 
 
@@ -197,6 +215,7 @@ h1 {
 }
 
 #SortingList li{
+    padding: 0 0 0 15px;
     list-style-type: none;    
     line-height: 50px;
     border-bottom: solid 1.5px white;
@@ -207,9 +226,11 @@ h1 {
     border-bottom: none;
 }
 
-#SortingList li:hover{
+#SortingList li:hover,
+#SortingList li:focus{
     background-color: var(--tertiary-color);
     color: black;
+    font-weight: 700;
 }
 
 
@@ -227,35 +248,83 @@ h1 {
 
 /****** Cartes Medias*/
 
-.photoCard,
-.videoCard {
+.mediaCard{
     width: 350px;
+    /* overflow: clip;
+    overflow-clip-margin: content-box; */
 }
 
-
-
-
-.photoBox img, 
-.videoBox video {
+.mediaBox {
     width: 350px;
     height: 300px;
-    object-fit: fill;
+    overflow: hidden;
+    border-radius: 5px;
     
 }
 
+/* .photoBox:focus-within,
+.videoBox:focus-within {
+    transform: scale(1.08);
+} */
+.mediaBox:focus-within,
+.mediaBox:hover {
+    transform: scale(1.08);
+}
+
+
+
+
+
+/* .photoBox img, 
+.videoBox video {
+    border-radius: 5px;
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;    
+    cursor: pointer;
+    
+} */
+.mediaBox .media 
+ {
+    border-radius: 5px;
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;    
+    cursor: pointer;
+
+
+    
+}
+.mediaBox .mediaInfos h3 {
+    color: blue;
+}
+
+
 .mediaInfos {
+    padding: 10px 10px 25px;
     display: flex;
     justify-content: space-between;
     color: var(--secondary-color);
 }
 .likesContainer {
     display: flex;
+    align-items: center;
 }
 
+.cardLikesHeart {
+    padding: 0 0 0 5px;
+    font-size: 15px;
+}
+
+/* .clickedHeart {
+    color: blueviolet;
+} */
 
 
 
- /****** float box */
+ /****** floating box */
 
 #priceAndTotalLikesBox {
     position: fixed;
@@ -263,25 +332,31 @@ h1 {
     right: calc(((100vw - 1440px)/2) + 100px);   
     width: 300px;
     height: 50px;
-    display: flex;
+    padding: 0 25px;
     background-color: var(--tertiary-color); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #totalLikes {
-    width: 100px;
+    /* width: 100px; */
     height: 50px;
+    padding: 0 10px 0 0;
+    line-height: 50px;
 }
 
 #totalLikesIco {
     width: 100px;
     height: 50px;
-    font-size: 30px;
+    font-size: 16px;
     color: black;
     line-height: 50px;
 }
 #priceBox {
-    width: 100px;
+    /* width: 100px; */
     height: 50px;
+    line-height: 50px;
 }
 #priceBox::after {
     content: "€ /jour";
