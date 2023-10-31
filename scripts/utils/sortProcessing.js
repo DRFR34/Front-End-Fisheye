@@ -52,7 +52,7 @@ function sortMediasCards(){
 }    
 
 
-// temporisation pour permettre la création des élémnets inhjectés par JS dans le DOM
+// temporisation pour permettre la création des éléments inhjectés par JS dans le DOM
 setTimeout(() => {
     sortMediasCards();
 }, 500);
