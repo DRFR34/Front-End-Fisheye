@@ -18,7 +18,7 @@ async function getPhotographersData() {
 getPhotographersData();
 
 
-let totalOfLikes;
+// let totalOfLikes;
 
 function selectAndInsertPhotographerInDom(photographers) {
     const photographersSection = document.querySelector(".photographerHeader");
@@ -28,22 +28,8 @@ function selectAndInsertPhotographerInDom(photographers) {
             photographersSection.appendChild(photographerBanner);
         }
     });
-    
-    const displayedLikesList = document.querySelectorAll('.mediaLikes');
-    let totalOfLikes = 0;
-    displayedLikesList.forEach(displayedLikes => {
-        const likes = parseInt(displayedLikes.textContent);
-        if (!isNaN(likes)) {
-            totalOfLikes += likes;
-        }
-    });
-        console.log("totalOfLikes : ", totalOfLikes)
-        return totalOfLikes;
-}
-    
+}   
 
-
-console.log("totalOfLikes : ", totalOfLikes)
 
 
 // async function getMediasData(){const response = await fetch('....'); }
@@ -53,6 +39,7 @@ async function getMediasData() {
         const response = await fetch("./data/all_data.json");
         const allJsonData = await response.json();
         selectAndInsertMediaInDom(allJsonData.media);
+
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
     }
@@ -73,8 +60,4 @@ function selectAndInsertMediaInDom(media) {
             }
         }
     });
-
 }
-    
-
-
