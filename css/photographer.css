@@ -1,6 +1,6 @@
 @import url(./style.css);
 
-
+*:focus {outline: 2px solid var(--secondary-color); }
 #contactModal {
     position:fixed;
     left: 0;
@@ -13,17 +13,6 @@
 
 }
 
-/* .photographerHeader {
-    
-    height: 300px;
-    margin: 0 150px 0 50px;
-}
-
-.photographerBanner {
-    background-color: #FAFAFA;
-    padding: 50px;
-} */
-
 .contactButton, .submitButton {
     font-size: 20px;
     font-weight: bold;
@@ -32,7 +21,6 @@
     width: 170px;
     height: 70px;
     border: none;
-    /* background-color: #901C1C; */
     background-color: var(--secondary-color);
     border-radius: 5px;
     cursor: pointer;
@@ -113,44 +101,40 @@ form input {
     bottom: 0;
     width: 100vw;
     height: 100vw;
-    padding: 5vh 5vw;
+    padding: 2vh 2vw;
     background-color: var(--white-color);
 }
 
 .lightboxContainer {
     position: relative;
-    border: 10px solid red;
-    /* position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20%); */
     width: -moz-fit-content;
     width:fit-content;
-    height: 90vh;
+    height: 99vh;
     margin: auto;
-  
-    /* padding: 30px; */
+    overflow:hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #previousBtn,
-#nextBtn  {
-    border: 1px solid blue;
-    /* z-index: 10; */
-    /* position: absolute; */
-    width: 100px;;
+#nextBtn, 
+#closeBtn {
+    border: 1px solid transparent;
+    width: 100px;
     height: 100%;
-    padding: 20px;
+    padding: 10px 10px;
     background-color: transparent;
-    color: var(--secondary-color);
-    font-size: 40px;
-    /* text-align: left;     */
+}
+
+#previousBtn:focus,
+#nextBtn:focus, 
+#closeBtn:focus {
+    outline: none;
 }
 
 
 #previousBtn {
-    /* right: 0; */
     text-align: right; 
 }
 
@@ -159,48 +143,47 @@ form input {
 }
 
 #closeBtn {
-    border: 1px solid blue;
     position: absolute;
-    top: 30px;
+    top: 0px;
     right: 0;
-    width: 100px;
-    height: 80px;
-    padding: 20px;
-    text-align: left;   
-    background-color: transparent;
+    height: 50px;
+    text-align: left;
+}
+
+#previousBtn i,
+#nextBtn i, 
+#closeBtn i {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
     color: var(--secondary-color);
-    font-size: 40px;
+    background-color:var(--white-color);
+    font-size: 45px;
+    line-height: 60px;
+    text-align:center;
+}
+
+#previousBtn:focus i,
+#nextBtn:focus i, 
+#closeBtn:focus i {    
+    background-color: var(--secondary-color);
+    color:var(--white-color);
 }
 
 
 .lightboxFigure {
-    border: 1px solid green;
-    width: auto;
-    height: calc(100% - 3rem);
+    transform: translateY(-3rem);
     margin: auto;
-    padding: 1px;
-    /* display: flex;
-    flex-direction: column; */
-    /* align-items: center; */
 }
 
-.lightboxCaption {
-    border: 2px solid pink;
-    /* padding: 30px; */
-    /* color:var(--secondary-color); */
-}
 .lightboxCaption h2 {
-    /* border: 2px solid pink; */
-    /* padding: 0 0 30px 0; */
     color:var(--secondary-color);
     font-size: 1.5rem;
-    /* margin-bottom: 30px; */
 }
 
 .lightboxFigure img,
 .lightboxFigure video {
-    /* width: 200px; */
-    max-height: 100%;
+    max-height: calc(90vh - 6rem);
     max-width: 100%;
     margin: auto;
 }
