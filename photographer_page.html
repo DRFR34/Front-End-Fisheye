@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fish-eye - photographe </title>
     <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script> 
     <script src="scripts/pages/photographerPage.js" defer></script>
     <script src="scripts/templates/photographersTemplates.js" defer></script>
@@ -22,7 +22,7 @@
   </head>
   <body>
     <header>
-      <a href="./index.html" class="invisible">Lien vers la page d'accueil<img class="logo" src="assets/images/logo.png" alt="logo de Fisheye" role="Image link" ></a>
+      <a href="./index.html" class="invisible">Lien vers la page d'accueil<img class="logo" src="assets/images/logo.png" alt="logo de Fish eye" role="Image link" ></a>
       
     </header>
     <main id="main">
@@ -32,20 +32,32 @@
         <!-- <button class="contactButton" onclick="displayModal()">Contactez-moi</button> -->
         <button class="contactButton" role="button">Contactez-moi</button>
       </section>
-      <section id="portfolioSorters">
+      <!-- <section id="portfolioSorters">
         <h2>Trier Par</h2>
         <div id="SortingDropdown" role="listbox" aria-label="menu des tris" tabindex="0">
             <div id="SortingDropdownIconBox">></div>
             <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
-                <li role="listitem" tabindex="0">Popularité</li>
+                <li role="listitem" tabindex="0" aria-labelledby="tri par popularité">Popularité</li>
                 <li role="listitem" tabindex="0">Date</li>
                 <li role="listitem" tabindex="0">Titre</li>
             </ul>
-        </div>
+        </div> -->
     </section>
+    <section id="portfolioSorters">
+      <h2>Trier Par</h2>
+      <div id="SortingDropdown" role="listbox" aria-label="menu déroulant" tabindex="0">
+          <div id="SortingDropdownIconBox">></div>
+          <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
+              <li role="listitem" tabindex="0" aria-label="tri des photos par popularité">Popularité</li>
+              <li role="listitem" tabindex="0" aria-label="tri des photos par date">Date</li>
+              <li role="listitem" tabindex="0" aria-label="tri des photos par titre">Titre</li>
+          </ul>
+      </div>
+  </section>
   
       <section id="portfolioSection">
-        <div id="mediaDisplayGrid" role="grid"></div>
+        <div id="mediaDisplayGrid" role="grid">           
+        </div>
         <aside id="priceAndTotalLikesBox" role="complementary">
           <div id="totalLikesBox">
             <span id="totalLikes"> </span>
@@ -53,14 +65,15 @@
           </div>
           <span id="priceBox" ></span>
         </aside>
+      
 
       </section>
     </main>
-    <section id="contactModal">
+    <section id="contactModal" class="invisible">vous êtes sur le formulaire de prise de contact
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <div>Nom du Photographe</div>
+          <div id="contactFormPhotographerName">Nom du Photographe</div>
           <img src="assets/icons/close.svg" alt="bouton de fermeture de la fenêtre modale" onclick="closeModal()" >
         </header>
 				<form>
