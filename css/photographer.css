@@ -1,3 +1,6 @@
+@import url(./style.css);
+
+
 #contactModal {
     position:fixed;
     left: 0;
@@ -6,33 +9,37 @@
     height: 100%;
     width: 100%;
     display: none;
-    background-color: #c4c4c44f;
+    background-color: var(--white-color);
 
 }
 
-.photographerHeader {
-    background-color: #FAFAFA;
+/* .photographerHeader {
+    
     height: 300px;
-    margin: 0 100px;
+    margin: 0 150px 0 50px;
 }
 
-
+.photographerBanner {
+    background-color: #FAFAFA;
+    padding: 50px;
+} */
 
 .contactButton, .submitButton {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color:var(--white-color);
     padding: 11px;
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    /* background-color: #901C1C; */
+    background-color: var(--secondary-color);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .contactButton:hover {
-    background-color: #DB8876;
+    background-color: var(--tertiary-color);
     color: black;
 }
 
@@ -42,7 +49,7 @@
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color:var(--tertiary-color);
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -106,19 +113,23 @@ form input {
     bottom: 0;
     width: 100vw;
     height: 100vw;
-    /* padding: 80px; */
-    background-color: rgba(233, 233, 233, 0.944);
+    padding: 5vh 5vw;
+    background-color: var(--white-color);
 }
 
 .lightboxContainer {
-    border: 1px solid red;
+    position: relative;
+    border: 10px solid red;
     /* position: absolute;
     top: 20%;
     left: 50%;
     transform: translateX(-50%) translateY(-20%); */
-    /* width: 100vw; */
-    height: 100vh;
-    padding: 30px;
+    width: -moz-fit-content;
+    width:fit-content;
+    height: 90vh;
+    margin: auto;
+  
+    /* padding: 30px; */
     display: flex;
     justify-content: center;
 }
@@ -128,47 +139,62 @@ form input {
     border: 1px solid blue;
     /* z-index: 10; */
     /* position: absolute; */
-    width:80px;
+    width: 100px;;
     height: 100%;
+    padding: 20px;
     background-color: transparent;
-    color: #901C1C;
+    color: var(--secondary-color);
     font-size: 40px;
-    
+    /* text-align: left;     */
 }
 
+
 #previousBtn {
-    left: 0;
+    /* right: 0; */
+    text-align: right; 
 }
 
 #nextBtn {
-    right: 0;
+    text-align: left;   
 }
 
 #closeBtn {
+    border: 1px solid blue;
     position: absolute;
     top: 30px;
-    right: 30px;
-    width: 80px;
+    right: 0;
+    width: 100px;
     height: 80px;
+    padding: 20px;
+    text-align: left;   
     background-color: transparent;
-    color: #901C1C;
+    color: var(--secondary-color);
     font-size: 40px;
 }
 
 
 .lightboxFigure {
     border: 1px solid green;
-    /* width: 90%; */
-    height: 95%;
+    width: auto;
+    height: calc(100% - 3rem);
     margin: auto;
-    display: flex;
-    flex-direction: column;
+    padding: 1px;
+    /* display: flex;
+    flex-direction: column; */
     /* align-items: center; */
 }
 
-.lightboxCaption h2 {
+.lightboxCaption {
     border: 2px solid pink;
-    color:#901C1C;
+    /* padding: 30px; */
+    /* color:var(--secondary-color); */
+}
+.lightboxCaption h2 {
+    /* border: 2px solid pink; */
+    /* padding: 0 0 30px 0; */
+    color:var(--secondary-color);
+    font-size: 1.5rem;
+    /* margin-bottom: 30px; */
 }
 
 .lightboxFigure img,
@@ -177,7 +203,5 @@ form input {
     max-height: 100%;
     max-width: 100%;
     margin: auto;
-
-
 }
 

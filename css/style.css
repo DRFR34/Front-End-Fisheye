@@ -3,9 +3,13 @@
 
 /* !ajout */
 :root {
+
+    /* Color palette */
     --primary-color : #D3573C;
     --secondary-color: #901C1C;
     --tertiary-color : #DB8876;
+    --light-grey-color:#E5E5E5;
+    --white-color: #ffffff;
     
 }
 * {
@@ -14,12 +18,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* border: solid 2px transparent; */
 }
-*:focus
+/* :focus 
 {
-    transform : scale(1.2);
-    border: solid 2px var(--secondary-color)
-}
+    /* transform : scale(1.2); */
+    /* border: solid 2px var(--secondary-color); */
+    /* border: solid 2px red; */
+
+/* }  */
+
+*:focus {outline: 1px solid var(--secondary-color); }
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -76,12 +85,12 @@ h1 {
     text-decoration: none;
 
 }
-.photographerPageLink:focus {
+/* .photographerPageLink:focus {
     background-color: var(--secondary-color);
 }
 .photographerPageLink:focus .photographerName {
     color: white;
-}
+} */
 
 .portraitBox {
     display:flex;
@@ -121,14 +130,24 @@ h1 {
     font-size: 9px;
 }
 
-/************  photographerPage ************/
+/************  photographer Page ************/
 
 
 /****** Header */
 .photographerHeader {
     position: relative;
+    height: 300px;
+    margin: 0 150px 0 50px;
+}
+/* .photographerHeader {
+    
+    
 }
 
+.photographerBanner {
+    background-color: #FAFAFA;
+    padding: 50px;
+} */
 .photographerHeader  .contactButton {
     position: relative;
     top:50%;
@@ -136,9 +155,10 @@ h1 {
 
 }
 
-#photographerHeader .photographerBanner {
+.photographerBanner {
     width: 100%;
-    padding: 0 50px;
+    padding: 50px;
+    background-color: #FAFAFA;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -160,7 +180,7 @@ h1 {
     font-weight: 500;
 }
 
-/****** Section Trier */
+/****** Sorting Section */
 
 #portfolioSorters{
     position: relative;
@@ -211,8 +231,6 @@ h1 {
 }
 
 
-#SortingList {
-}
 
 #SortingList li{
     padding: 0 0 0 15px;
@@ -266,10 +284,10 @@ h1 {
 .videoBox:focus-within {
     transform: scale(1.08);
 } */
-.mediaBox:focus-within,
+/* .mediaBox:focus-within,
 .mediaBox:hover {
     transform: scale(1.08);
-}
+} */
 
 
 
