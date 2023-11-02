@@ -28,8 +28,8 @@ class VideoCard {
         this.videoCard = document.createElement('article');
         this.videoCard.className = 'mediaCard videoCard';
         this.videoCard.innerHTML = `
-            <div class="mediaBox videoBox" >
-                <video class="media video" src="./assets/fisheye_photos/sample_photos/${photographerId}/${video}" tabindex="0"></video>
+            <div class="mediaBox videoBox">
+                <video class="media video" src="./assets/fisheye_photos/sample_photos/${photographerId}/${video}" tabindex="0">video intitulée ${title} </video>
             </div>
             <div class="mediaInfos">
                 <h3>${title}</h3>
