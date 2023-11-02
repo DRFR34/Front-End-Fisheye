@@ -35,7 +35,14 @@
     transform: scale(1.1);
 }
 
-.modal {
+.submitButton:disabled {
+    background: #646464;
+    color: #b9b8b8;    
+    cursor: not-allowed;
+}
+
+#formContainer {
+    position: relative;
     border-radius: 5px;
     background-color:var(--tertiary-color);
     width: 50%;
@@ -47,20 +54,37 @@
     margin: auto;
 }
 
-.modal header {
+/* #formContainer header {
     justify-content: space-between;
     width: 100%;
-}
+} */
 
-.modal header img {
+#closeBtn i {
     cursor: pointer;
+    color: blue;
+    background: transparent;
 }
 
-.modal header h2 {
+#formBanner{
+    width: 100%;
+    padding: 0 0 30px 0;
+}
+
+#formBanner h2,
+#formBanner h1 {
+    padding: 0;
+    line-height: 70px;
+    font-size: 64px;
+    font-weight: normal;
+    /* text-align: center; */
+    color: black;
+}
+
+/* #formBanner h1 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
-}
+} */
 
 form {
     display: flex;
@@ -79,7 +103,7 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    /* margin-bottom: 26px; */
 }
 
 form input {
@@ -89,6 +113,19 @@ form input {
     border-radius: 5px;
 }
 
+form textarea {
+    width: 100%;
+    border-radius: 5px;
+}
+
+form span {
+    transform: translateY(-10px);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+   color: var(--white-color);
+   background-color: var(--secondary-color);
+}
 
 /*** LightBox*/
 
@@ -119,17 +156,18 @@ form input {
 
 #previousBtn,
 #nextBtn, 
-#closeBtn {
+.closeBtn {
     border: 1px solid transparent;
     width: 100px;
     height: 100%;
     padding: 10px 10px;
-    background-color: transparent;
+    background:transparent;
+    cursor: pointer;
 }
 
 #previousBtn:focus,
 #nextBtn:focus, 
-#closeBtn:focus {
+.closeBtn:focus {
     outline: none;
 }
 
@@ -142,7 +180,7 @@ form input {
     text-align: left;   
 }
 
-#closeBtn {
+#closeLightBoxBtn {
     position: absolute;
     top: 0px;
     right: 0;
@@ -152,12 +190,12 @@ form input {
 
 #previousBtn i,
 #nextBtn i, 
-#closeBtn i {
+.closeBtn i {
     border-radius: 50%;
     height: 60px;
     width: 60px;
     color: var(--secondary-color);
-    background-color:var(--white-color);
+    background-color:transparent;
     font-size: 45px;
     line-height: 60px;
     text-align:center;
@@ -165,7 +203,7 @@ form input {
 
 #previousBtn:focus i,
 #nextBtn:focus i, 
-#closeBtn:focus i {    
+.closeBtn:focus i {    
     background-color: var(--secondary-color);
     color:var(--white-color);
 }
