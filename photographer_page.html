@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <!-- ! Ajout du meta viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fish-eye - photographe </title>
-    <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script> 
-    <script src="scripts/pages/photographerPage.js" defer></script>
-    <script src="scripts/templates/photographersTemplates.js" defer></script>
-    <script src="scripts/templates/mediasTemplates.js" defer></script>
-    <script src="scripts/factories/mediaFactory.js" defer></script>
-    <script src="scripts/utils/likesProcessing.js" defer></script>
-    <script src="scripts/utils/sortProcessing.js" defer></script>
-    <script src="scripts/utils/contactForm.js" defer></script>
-    <script src="scripts/utils/lightbox.js" defer></script>
 
-  </head>
-  <body>
-    <header>
-      <a href="./index.html" class="invisible">Lien vers la page d'accueil<img class="logo" src="assets/images/logo.png" alt="logo de Fish eye" role="Image link" ></a>
-      
-    </header>
-    <main id="main">
-      <!-- !div remplacée par section -->
-      <section id="photographerHeader" class="photographerHeader">
-        <!--! A remplacer par un listener  -->
-        <!-- <button class="contactButton" onclick="displayModal()">Contactez-moi</button> -->
-        <button class="contactButton" role="button">Contactez-moi</button>
-      </section>
-      <!-- <section id="portfolioSorters">
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <!-- ! Ajout du meta viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fish-eye - photographe </title>
+  <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script>
+  <script src="scripts/pages/photographerPage.js" defer></script>
+  <script src="scripts/templates/photographersTemplates.js" defer></script>
+  <script src="scripts/templates/mediasTemplates.js" defer></script>
+  <script src="scripts/factories/mediaFactory.js" defer></script>
+  <script src="scripts/utils/likesProcessing.js" defer></script>
+  <script src="scripts/utils/sortProcessing.js" defer></script>
+  <script src="scripts/utils/contactForm.js" defer></script>
+  <script src="scripts/utils/lightbox.js" defer></script>
+
+</head>
+
+<body>
+  <header>
+    <a href="./index.html" class="invisible">Lien vers la page d'accueil<img class="logo" src="assets/images/logo.png"
+        alt="logo de Fish eye" role="Image link"></a>
+
+  </header>
+  <main id="main">
+    <!-- !div remplacée par section -->
+    <section id="photographerHeader" class="photographerHeader">
+      <!--! A remplacer par un listener  -->
+      <!-- <button class="contactButton" onclick="displayModal()">Contactez-moi</button> -->
+      <button id="contactButton" class="contactButton" type="button" role="button">Contactez-moi</button>
+    </section>
+    <!-- <section id="portfolioSorters">
         <h2>Trier Par</h2>
         <div id="SortingDropdown" role="listbox" aria-label="menu des tris" tabindex="0">
             <div id="SortingDropdownIconBox">></div>
@@ -46,52 +49,69 @@
     <section id="portfolioSorters">
       <h2>Trier Par</h2>
       <div id="SortingDropdown" role="listbox" aria-label="menu déroulant" tabindex="0">
-          <div id="SortingDropdownIconBox">></div>
-          <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
-              <li role="listitem" tabindex="0" aria-label="tri des photos par popularité">Popularité</li>
-              <li role="listitem" tabindex="0" aria-label="tri des photos par date">Date</li>
-              <li role="listitem" tabindex="0" aria-label="tri des photos par titre">Titre</li>
-          </ul>
+        <div id="SortingDropdownIconBox">></div>
+        <ul id="SortingList" role="list" aria-roledescription="Liste des choix de tri">
+          <li role="listitem" tabindex="0" aria-label="tri des photos par popularité">Popularité</li>
+          <li role="listitem" tabindex="0" aria-label="tri des photos par date">Date</li>
+          <li role="listitem" tabindex="0" aria-label="tri des photos par titre">Titre</li>
+        </ul>
       </div>
-  </section>
-  
-      <section id="portfolioSection">
-        <div id="mediaDisplayGrid" role="grid">           
+    </section>
+
+    <section id="portfolioSection">
+      <div id="mediaDisplayGrid" role="grid">
+      </div>
+      <aside id="priceAndTotalLikesBox" role="complementary">
+        <div id="totalLikesBox">
+          <span id="totalLikes"> </span>
+          <span id="totalLikesIco"><i class="fa-solid fa-heart"></i></span>
         </div>
-        <aside id="priceAndTotalLikesBox" role="complementary">
-          <div id="totalLikesBox">
-            <span id="totalLikes"> </span>
-            <span id="totalLikesIco"><i class="fa-solid fa-heart"></i></span>
-          </div>
-          <span id="priceBox" ></span>
-        </aside>
-      
+        <span id="priceBox"></span>
+      </aside>
 
-      </section>
-    </main>
-    <section id="contactModal" class="invisible">vous êtes sur le formulaire de prise de contact
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <div id="contactFormPhotographerName">Nom du Photographe</div>
-          <img src="assets/icons/close.svg" alt="bouton de fermeture de la fenêtre modale" onclick="closeModal()" >
-        </header>
-				<form>
-					
-						<label for="prenom">Prénom</label>
-						<input id="prenom" type="text" required>
 
-						<label for="nom">Nom</label>
-						<input id="nom" name="nom" type="text" required>
+    </section>
+  </main>
 
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <label for="message">Votre message</label>
-            <textarea name="message" id="message" cols="84" rows="10"></textarea>
-					
-          <button class="submitButton" type="submit">Envoyer</button>
-				</form>
-			</div>
-		</section>
-  </body>
+  <div id="contactModal">
+
+    <div id="formContainer" tabindex="-1">
+      <div id="formBanner">
+        <h2>Contactez-moi<br></h2>
+      </div>
+      <form id="form" name="contact" action="index.html" method="get" novalidate>
+
+
+        <!-- firstName  -->
+        <div class="firstNameDivContainer" data-jsSelector="formData">
+          <label for="firstName">Prénom</label><br>
+          <input class="text-control" type="text" id="firstName" name="firstName" tabindex="0" required value="gg">
+        </div>
+        <!-- LAST NAME -->
+        <div data-jsSelector="formData">
+          <label for="lastName">Nom</label><br>
+          <input class="text-control" type="text" id="lastName" name="lastName" tabindex="0" required value="gg">
+        </div>
+        <!-- EMAIL -->
+        <div data-jsSelector="formData">
+          <label for="email">E-mail</label><br>
+          <input class="text-control" type="email" id="email" name="email" tabindex="0" required value="gg@gg.gg">
+        </div>
+        <div data-jsSelector="formData">
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" cols="50" rows="10" required tabindex="0"></textarea>
+        </div>
+
+
+        <input id="submitBtn" type="submit" value="Envoyer" tabindex="0" disabled>
+      </form>
+      <button id="closeContactFormBtn" class="closeBtn invisible" type="button" tabindex="0">Fermer
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+  </div>
+
+</body>
+
 </html>
