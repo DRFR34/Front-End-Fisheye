@@ -26,7 +26,7 @@ setTimeout( () => {
             <i class="nextIcon fa-solid fa-chevron-right"></i>
         </button>
 
-        <button type="button" id="closeBtn" tabindex="0" aria-label="fermer le diaporama">
+        <button type="button" id="closeLightBoxBtn" class="closeBtn"  tabindex="0" aria-label="fermer le diaporama">
             <i class="closeIcon fa-solid fa-xmark"></i>            
         </button>
     </div>
@@ -53,7 +53,7 @@ setTimeout( () => {
         updateMedia();
     });
 
-    closeBtn.addEventListener('click', () => {
+    closeLightBoxBtn.addEventListener('click', () => {
         lightboxModal.style.display = 'none';
     });
 
