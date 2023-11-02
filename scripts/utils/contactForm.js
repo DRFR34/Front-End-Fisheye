@@ -7,7 +7,8 @@ contactButton.addEventListener("click", displayModal);
 function displayModal() {   
     // const photographerName = document.querySelector(".photographerName")
 
-    contactModal.style.display = "block"
+    contactModal.style.display = "block";
+    firstFocusableElement.focus();
     // const contactModalTitle = document.createElement('h2');
     // const formContainer = document.querySelector("#formContainer")
     // contactModalTitle.innerText = `Contactez-moi <br>${pagePhotographerName}`
@@ -20,7 +21,7 @@ function closeModal() {
 
 //****** keyboard navigation ****** 
 
-const closeContactFormBtn = document.querySelector('#closeContactFormBtn');
+// const closeContactFormBtn = document.querySelector('#closeContactFormBtn');
 // const submitBtn= document.querySelector('#submitBtn');
 
 closeContactFormBtn.addEventListener('keydown', (e) => {
@@ -34,6 +35,74 @@ closeContactFormBtn.addEventListener('keydown', (e) => {
 const submitBtn= document.querySelector('#submitBtn');
  
 const form = document.querySelector("form");
+
+// const closeBtn = document.querySelector('#closeBtn');
+// const submitBtn= document.querySelector('#submitBtn');
+
+closeContactFormBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      closeModal();
+    }
+  });
+  
+closeContactFormBtn.addEventListener('click', closeModal);
+
+// const submitBtn= document.querySelector('#submitBtn');
+ 
+// const form = document.querySelector("form");
+form.addEventListener('submit', (e) => e.preventDefault());
+const focusableElements = 'button, input, select, textarea, [tabindex="0"]';
+// let modal = document.querySelector('#modal'); // Assurez-vous que 'modal' est bien défini
+// console.log("modal : ", modal);
+
+let firstFocusableElement = contactModal.querySelector('[tabindex="0"]'); // Utilise'querySelector' pour le premier élément
+let focusableContent = contactModal.querySelectorAll(focusableElements);
+let lastFocusableElement = focusableContent[focusableContent.length - 1];
+// }
+
+
+
+
+
+document.addEventListener('keydown', (e) => {
+  let isTabPressed = e.key === 'Tab';
+  let isEscapePressed = e.key === "Escape"
+
+  if (isEscapePressed) {
+    closeModal();
+  }
+  if (!isTabPressed) { 
+    return; 
+  }
+
+  if (e.shiftKey) { 
+    if (document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus(); 
+      e.preventDefault();
+    }
+  } else { // if tab key is pressed
+    if (document.activeElement === lastFocusableElement) { 
+      firstFocusableElement.focus(); 
+      e.preventDefault();
+    }
+  }
+});
+
+closeContactFormBtn.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    closeModal();
+  }
+});
+
+
+closeContactFormBtn.addEventListener('click', closeModal);
+
+// submitBtn.addEventListener('click', (e) => e.preventDefault());
+
+
+// function closeModal() {
+//   modal.style.display = 'none';
+// }
 
 
 //****** form's fields validation  ******
@@ -95,7 +164,8 @@ function requiredFieldsInspection() {
 
 function requiredFieldErrorIndication(requiredField, errorSpanId, errorMessage) {
     resetfieldErrorIndication(requiredField, errorSpanId);
-    requiredField.style.border = 'solid 2px red';    
+    // requiredField.style.border = 'solid 2px red';    
+    requiredField.classList.add("errorBorder")    
     let errorSpan = document.createElement('span');
     errorSpan.setAttribute('id', errorSpanId);
     errorSpan.textContent = errorMessage;
@@ -112,16 +182,18 @@ function resetfieldErrorIndication(requiredField, errorSpanId) {
 function btnSubmitActivation() {
     AllInputsValidated = firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid;
             // console.log("AllInputsValidated:", AllInputsValidated);
-    const form = document.querySelector('form');
+    // const form = document.querySelector('form');
     if (AllInputsValidated) {
-        form.querySelector('#submitBtn').removeAttribute("disabled");
-        form.addEventListener('submit', (e) => {
+        // form.querySelector('#submitBtn').removeAttribute("disabled");
+        submitBtn.removeAttribute("disabled", "");
+        submitBtn.addEventListener('click', (e) => {
             e.preventDefault();
             createRegistrationIsConfirmed();
             // console.log("données du formulaire \n Prénom : " +  firstName.value + "\n Nom : " + lastName.value + "\n Email : " + email.value + "\n Message : ", message.value);
         });
     } else {
-        form.querySelector('#submitBtn').setAttribute("disabled", "");
+        // form.querySelector('#submitBtn').setAttribute("disabled", "");
+        submitBtn.setAttribute("disabled", "");
     }
 }
 function createRegistrationIsConfirmed() {
