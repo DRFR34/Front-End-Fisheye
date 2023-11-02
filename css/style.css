@@ -28,7 +28,7 @@
 
 /* }  */
 
-*:focus {outline: 1px solid var(--secondary-color); }
+*:focus {outline: 2px solid var(--secondary-color); }
 
 body {
     font-family: "DM Sans", sans-serif;

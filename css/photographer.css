@@ -1,6 +1,9 @@
 @import url(./style.css);
 
-*:focus {outline: 2px solid var(--secondary-color); }
+
+
+/* *:focus {outline: 2px solid var(--secondary-color); } */
+/******* contact modal ******/
 #contactModal {
     position:fixed;
     left: 0;
@@ -12,6 +15,7 @@
     background-color: var(--white-color);
 
 }
+
 
 .contactButton, .submitButton {
     font-size: 20px;
@@ -26,10 +30,12 @@
     cursor: pointer;
 }
 
-.contactButton:hover {
+.contactButton:hover,
+.submitButton:hover  {
     background-color: var(--tertiary-color);
     color: black;
 }
+
 
 .submitButton:hover {
     transform: scale(1.1);
@@ -37,33 +43,52 @@
 
 .submitButton:disabled {
     background: #646464;
-    color: #b9b8b8;    
+    color: black;    
     cursor: not-allowed;
 }
 
 #formContainer {
     position: relative;
-    border-radius: 5px;
-    background-color:var(--tertiary-color);
+    margin: 5% auto;
     width: 50%;
+    /* height: 90vh; */
+    border-radius: 5px;
+    padding: 36px;
+    background-color:var(--tertiary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
 }
 
-/* #formContainer header {
-    justify-content: space-between;
-    width: 100%;
-} */
+#closeContactFormBtn {
+    position: absolute;
+    right: 36px;
+    top: 36px;
+    margin: 0;
+    height: auto;
+    width: auto;
+    padding: 0; 
+    
+}
 
-#closeBtn i {
+#closeContactFormBtn i {
+    /* transform: translate( -50% -50%); */
     cursor: pointer;
-    color: blue;
+    /* margin: 0;
+    padding: 0; */
     background: transparent;
+    color: var(--white-color);
+    font-size: 64px;
+    /* font-weight: 600; */
 }
+
+#closeContactFormBtn:hover i,
+#closeContactFormBtn:focus i  {
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
 
 #formBanner{
     width: 100%;
@@ -74,7 +99,7 @@
 #formBanner h1 {
     padding: 0;
     line-height: 70px;
-    font-size: 64px;
+    font-size: 60px;
     font-weight: normal;
     /* text-align: center; */
     color: black;
@@ -121,10 +146,15 @@ form textarea {
 form span {
     transform: translateY(-10px);
     width: 100%;
+    /* border: solid 6px var(--secondary-color); */
     border-radius: 0 0 5px 5px;
     padding: 10px;
    color: var(--white-color);
    background-color: var(--secondary-color);
+}
+
+.errorBorder {
+    border: solid 3px var(--secondary-color);
 }
 
 /*** LightBox*/
