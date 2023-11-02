@@ -29,8 +29,8 @@
     const photographerBanner = document.createElement( 'div' );
     photographerBanner.className='photographerBanner';
     photographerBanner.innerHTML = `
-        <div class="textsContentBox">
-            <h1 class="photographerName">${name}</h1>
+        <div id="textsContentBox"  class="textsContentBox">
+            <h1 id="pagePhotographerName" class="photographerName">${name}</h1>
             <p class="photographerLocation">${city}, ${country}</p>
             <p class="photographerTagline">${tagline}</p>
         </div>
@@ -39,6 +39,8 @@
         </div>    
     `;
     priceBox.innerHTML = `${price}`;
+    // const pagePhotographerName = document.getElementById("pagePhotographerName");
+    // return photographerBanner, pagePhotographerName;
     return photographerBanner;
     
 }
