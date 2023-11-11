@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- ! Ajout du meta viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script> 
-    <!-- ! Mise des liens script dans le head avec defer -->
-     <script src="scripts/templates/photographersTemplates.js" defer></script>
-    <script src="scripts/pages/index.js" defer></script>
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographersSection"></div> 
-    </main>
 
-   
-  </body>
+<head>
+  <meta charset="utf-8">
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  <!-- ! Ajout du meta viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script>
+  <!-- ! Mise des liens script dans le head avec defer -->
+  <script src="scripts/templates/photographersTemplates.js" defer></script>
+  <script src="scripts/pages/index.js" defer></script>
+  <title>Fisheye</title>
+</head>
+
+<body>
+  <header id="indexHeader">
+    <img id="indexPageLogo" class="logo" src="assets/images/logo.png" alt="Logo de fish-eye" />
+    <h1 aria-label="Présentation de nos photographes" tabindex="0">Nos photographes</h1>
+  </header>
+  <main id="main">
+    <div class="photographersSection"></div>
+  </main>
+</body>
+
 </html>
-
-
