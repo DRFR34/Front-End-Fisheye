@@ -1,21 +1,17 @@
-
+//== functions 
 
 function calcTotalOfLikes() {
-
     const totalLikes = document.getElementById("totalLikes");
-
     const displayedLikesList = document.querySelectorAll('.mediaLikes');
-
     const tempTotalOfLikes = Array.from(displayedLikesList).reduce((total, displayedLikes) => total + parseInt(displayedLikes.textContent), 0);
-
-            // console.log("tempTotalOfLikes : ", tempTotalOfLikes);                
-        
-    totalLikes.textContent = tempTotalOfLikes ;      
+    totalLikes.textContent = tempTotalOfLikes ;
+    const pagePhotographerName = document.getElementById("pagePhotographerName").textContent;
+    let totalLikesAriaLabel = pagePhotographerName +"cumule un total de :" + tempTotalOfLikes + "likes";
+    totalLikes.setAttribute('aria-label', totalLikesAriaLabel);
     
 }
 
-//+1 si carte non cliquée, sinon -1 ;
-// + ou -  la classe clickedHeart ( → affichage d'un coeur plein)
+
 function voteWithLikes() {
     const cardLikesHeartList = document.querySelectorAll('.cardLikesHeart');
 
@@ -26,25 +22,27 @@ function voteWithLikes() {
 }
 
 function addOrRemoveLikes(cardLikesHeart) {
+    const likesHeart = cardLikesHeart;
     const mediaLikes = cardLikesHeart.parentElement.querySelector('.mediaLikes');
     let nbOFlikes = parseInt(mediaLikes.textContent);
-    if ( cardLikesHeart.classList.contains("fa-regular")) {
-        mediaLikes.textContent = nbOFlikes + 1;
-        cardLikesHeart.classList.remove("fa-regular");       
-        cardLikesHeart.classList.add("fa-solid");     
+    const heartClassLIst = cardLikesHeart.classList;
+    const emptyHeartClass = "fa-regular";
+    const fullHeartClass = "fa-solid"; 
+
+    nbOFlikes = heartClassLIst.contains(emptyHeartClass) ? ++nbOFlikes : --nbOFlikes;
+    mediaLikes.textContent = nbOFlikes;
+    heartClassLIst.toggle(emptyHeartClass);       
+    heartClassLIst.toggle(fullHeartClass);
+    let mediaLikesAriaLabel = "Nombre de mentions j'aime :" + nbOFlikes;
+    mediaLikes.setAttribute('aria-label', mediaLikesAriaLabel)
+    if (heartClassLIst.contains(emptyHeartClass)){
+        likesHeart.setAttribute('aria-label',"");
+        likesHeart.setAttribute('aria-label',"Cliquez pour ajouter une mention j'aime");
     } else {
-        mediaLikes.textContent = nbOFlikes - 1;
-        cardLikesHeart.classList.remove("fa-solid");       
-        cardLikesHeart.classList.add("fa-regular");  
+        likesHeart.setAttribute('aria-label',"");
+        likesHeart.setAttribute('aria-label',"Cliquez pour retirer votre mention j'aime :")
     }
 
     calcTotalOfLikes();
 }
   
-
- // tempo pour création du Dom par JS
-setTimeout(() => { 
-    calcTotalOfLikes();
-    voteWithLikes() 
-    // addOrRemoveLikes();
-    }, 200);
