@@ -1,10 +1,10 @@
-// récupération de l'id du photographe dans l'URL
+//== get the photographer id with URL 
+
 const urlSearch = window.location.search;
-
 const urlParams = new URLSearchParams(urlSearch);
-
 const urlId = urlParams.get('id');
 
+//== functions 
 
 async function getPhotographersData() {
     try {
@@ -13,12 +13,8 @@ async function getPhotographersData() {
         selectAndInsertPhotographerInDom(allJsonData.photographers);
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
-    }
+    }          
 }
-getPhotographersData();
-
-
-// let totalOfLikes;
 
 function selectAndInsertPhotographerInDom(photographers) {
     const photographersSection = document.querySelector(".photographerHeader");
@@ -31,20 +27,15 @@ function selectAndInsertPhotographerInDom(photographers) {
 }   
 
 
-
-// async function getMediasData(){const response = await fetch('....'); }
-
 async function getMediasData() {
     try {
         const response = await fetch("./data/all_data.json");
         const allJsonData = await response.json();
         selectAndInsertMediaInDom(allJsonData.media);
-
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
     }
 }
-getMediasData();
 
 
 function selectAndInsertMediaInDom(media) {
@@ -53,11 +44,17 @@ function selectAndInsertMediaInDom(media) {
         if (medium.photographerId == urlId) {
             try {
                 const mediaCard = MediaFactory.createMediaCard(medium);
-                mediaDisplayGrid.appendChild(mediaCard);                
-
+                mediaDisplayGrid.appendChild(mediaCard);  
             } catch (error) {
                 console.error(error);
             }
         }
     });
+    calcTotalOfLikes();
+    voteWithLikes();
 }
+
+//== init 
+
+getPhotographersData();
+getMediasData();
