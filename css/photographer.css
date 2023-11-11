@@ -1,9 +1,8 @@
 @import url(./style.css);
 
 
+/*== contact modal */
 
-/* *:focus {outline: 2px solid var(--secondary-color); } */
-/******* contact modal ******/
 #contactModal {
     position:fixed;
     left: 0;
@@ -13,45 +12,61 @@
     width: 100%;
     display: none;
     background-color: var(--white-color);
-
 }
 
-
-.contactButton, .submitButton {
-    font-size: 20px;
-    font-weight: bold;
-    color:var(--white-color);
-    padding: 11px;
+.contactButton,
+.submitButton,
+.ctcFormBtn {
     width: 170px;
     height: 70px;
     border: none;
-    background-color: var(--secondary-color);
     border-radius: 5px;
+    background-color: var(--secondary-color);
+    padding: 11px;
+    font-size: 18px;
+    font-weight: bold;
+    color:var(--white-color);
     cursor: pointer;
 }
 
 .contactButton:hover,
+.contactButton:focus,
 .submitButton:hover  {
     background-color: var(--tertiary-color);
-    color: black;
+    color: var(--black-color);
 }
 
-
-.submitButton:hover {
-    transform: scale(1.1);
+.submitButton:focus {
+    border-color: var(--white-color);
 }
 
-.submitButton:disabled {
-    background: #646464;
-    color: black;    
+.ctcFormBtn:hover,
+.ctcFormBtn:focus {
+    background-color: var(--primary-color);
+    border: solid 3px var(--secondary-color);
+}
+
+.submitBtn {
+    margin: 35px 0 0;
+}
+
+.submitBtn:disabled {
+    background: var(--secondary-color);
     cursor: not-allowed;
+}
+
+.submitBtn:disabled:hover {
+    background: transparent;
+    border: transparent;
+    cursor: not-allowed;
+    color: var(--tertiary-color);
 }
 
 #formContainer {
     position: relative;
     margin: 5% auto;
+    box-shadow: #00000059 0px 5px 15px;
     width: 50%;
-    /* height: 90vh; */
     border-radius: 5px;
     padding: 36px;
     background-color:var(--tertiary-color);
@@ -73,18 +88,14 @@
 }
 
 #closeContactFormBtn i {
-    /* transform: translate( -50% -50%); */
     cursor: pointer;
-    /* margin: 0;
-    padding: 0; */
     background: transparent;
     color: var(--white-color);
-    font-size: 64px;
-    /* font-weight: 600; */
+    font-size: 48px;
 }
 
 #closeContactFormBtn:hover i,
-#closeContactFormBtn:focus i  {
+#closeContactFormBtn:focus i {
     cursor: pointer;
     color: var(--secondary-color);
 }
@@ -92,24 +103,17 @@
 
 #formBanner{
     width: 100%;
-    padding: 0 0 30px 0;
+    padding: 0 0 20px 0;
 }
 
 #formBanner h2,
 #formBanner h1 {
     padding: 0;
-    line-height: 70px;
-    font-size: 60px;
+    line-height: 55px;
+    font-size: 48px;
     font-weight: normal;
-    /* text-align: center; */
-    color: black;
+    color: var(--black-color);
 }
-
-/* #formBanner h1 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-} */
 
 form {
     display: flex;
@@ -119,36 +123,43 @@ form {
 }
 
 form label {
+    margin: 10px 0 0;
+    padding: 15px 0 0 0;
     color: #312E2E;
-    font-size: 36px;
+    font-size: 24px;
 }
 
-form div {
+.formFieldBox {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    /* margin-bottom: 26px; */
 }
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 52px;
     border: none;
     border-radius: 5px;
+    padding: 3px 4px 5px;
+    font-size: 24px;
 }
 
 form textarea {
     width: 100%;
     border-radius: 5px;
+    padding: 4px;
+    font-size: 24px;
 }
 
 form span {
-    transform: translateY(-10px);
+    position: absolute;
+    bottom: -22px;
     width: 100%;
-    /* border: solid 6px var(--secondary-color); */
+    border: solid 0 3px var(--secondary-color);
     border-radius: 0 0 5px 5px;
-    padding: 10px;
+    padding: 3px;
    color: var(--white-color);
    background-color: var(--secondary-color);
 }
@@ -157,7 +168,23 @@ form span {
     border: solid 3px var(--secondary-color);
 }
 
-/*** LightBox*/
+/*== confirmation message modal */
+
+#formContainer.messageIsSent {
+    height : 350px;
+    text-align : center;
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+}
+
+.messageIsSent button {
+    position :absolute;
+    bottom : 25px;
+}
+
+/*== LightBox */
 
 #lightboxModal {
     z-index: 6;
