@@ -1,14 +1,18 @@
-setTimeout(() => {
+// wait for all DOM's elements loaded
+window.addEventListener('load', () => {
+
+    //== variables 
+   
     let medias = document.querySelectorAll('.media');
     let titles = document.querySelectorAll('.mediaInfos h3');
-    let mediasSrcArray = Array.from(medias, media => media.currentSrc);
+    let mediasSrcArray = Array.from(medias).map(media => media.currentSrc);
     let mediasTitles = Array.from(titles).map(h3 => h3.innerText);
     let currentIndex = 0;
-
-    
-
     let lightboxModal = document.createElement("section");
     lightboxModal.id = "lightboxModal";
+
+    //== Modal injection in DOM 
+
     document.body.appendChild(lightboxModal);
     lightboxModal.innerHTML = `
     <div class="lightboxContainer" tabindex="-1">
@@ -22,7 +26,7 @@ setTimeout(() => {
             </figcaption>
         </figure>
 
-        <button type="button" id="nextBtn" tabindex="0" aria-label="Afficher le média suivant">
+        <button type="button" id="nextBtn" tabindex="0" aria-label="Afficher le media suivant">
             <i class="nextIcon fa-solid fa-chevron-right"></i>
         </button>
 
@@ -35,37 +39,49 @@ setTimeout(() => {
     let img = lightboxModal.querySelector('img');
     let lightboxTitle = lightboxModal.querySelector(".lightboxTitle");
 
-    // let lightBoxfirstFocusableElement = lightboxModal.querySelector('[tabindex="0"]'); // Utilise'querySelector' pour le premier élément
-    // let lightBoxfocusableContent = lightboxModal.querySelectorAll(lightBoxfocusableElements);
-    // let lightBoxlastFocusableElement = lightBoxfocusableContent[lightBoxfocusableContent.length - 1];
-
-
     function closeLightboxModal() {
         lightboxModal.style.display = 'none';
+        escapeLink.focus();
     }
 
+    //-- open ligthbox
+
     medias.forEach((media, index) => {
+
         media.addEventListener('click', () => {
             currentIndex = index;
-            updateMedia();
+            console.log("currentIndex clic:",currentIndex);
+            setMediaType();
             lightboxModal.style.display = 'block';
             lightBoxfirstFocusableElement.focus();
+        });
+
+        media.addEventListener('keydown', (event) => {            
+            if (event.key === 'Enter') {
+                event.preventDefault()
+                currentIndex = index;
+                console.log("currentIndex enter:",currentIndex);
+                setMediaType();
+                lightboxModal.style.display = 'block';
+                lightBoxfirstFocusableElement.focus();
+            }
         });
     });
 
     previousBtn.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + mediasSrcArray.length) % mediasSrcArray.length;
-        updateMedia();
+        setMediaType();
     });
 
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % mediasSrcArray.length;
-        updateMedia();
+        setMediaType();
     });
 
     closeLightBoxBtn.addEventListener('click', closeLightboxModal);
 
-    function updateMedia() {
+   
+    function setMediaType() {
         let isVideo = medias[currentIndex].tagName.toLowerCase() === 'video';
 
         img.remove();
@@ -79,79 +95,44 @@ setTimeout(() => {
         lightboxTitle.innerText = mediasTitles[currentIndex];
         lightboxModal.querySelector('.lightboxFigure').prepend(img);
     }
-    // }, 500);
+    
 
 
-    //****** keyboard navigation ****** 
+    //== Modal's keyboard navigation  
+    
+    // *don't go out of the modal  
 
-    // const closeContactFormBtn = document.querySelector('#closeContactFormBtn');
-    // const submitBtn= document.querySelector('#submitBtn');
-
-    // closeLightBoxBtn.addEventListener('keydown', (e) => {
-    //     if (e.key === 'Enter') {
-    //       closeModal();
-    //     }
-    //   });
-
-    // closeLightBoxBtn.addEventListener('click', closeLightboxModal);
-
-    // const submitBtn= document.querySelector('#submitBtn');
-
-    // const form = document.querySelector("form");
-
-    // const closeBtn = document.querySelector('#closeBtn');
-    // const submitBtn= document.querySelector('#submitBtn');
-
-    // closeLightBoxBtn.addEventListener('keydown', (e) => {
-    //     if (e.key === 'Enter') {
-    //         closeLightboxModal();
-    //     }
-    // });
-    closeLightBoxBtn.addEventListener('keydown', (e) => (e.key === 'Enter') ? closeLightboxModal() : null);
-    closeLightBoxBtn.addEventListener('click', closeLightboxModal);       
-
-    // const submitBtn= document.querySelector('#submitBtn');
-
-    // const form = document.querySelector("form");
-    // form.addEventListener('submit', (e) => e.preventDefault());
+    closeLightBoxBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeLightboxModal() : null);
+    closeLightBoxBtn.addEventListener('click', closeLightboxModal);
     const lightBoxfocusableElements = 'button, [tabindex="0"]';
-    // let modal = document.querySelector('#modal'); // Assurez-vous que 'modal' est bien défini
-    // console.log("modal : ", modal);
 
-    let lightBoxfirstFocusableElement = lightboxModal.querySelector('[tabindex="0"]'); // Utilise'querySelector' pour le premier élément
+    let lightBoxfirstFocusableElement = lightboxModal.querySelector('[tabindex="0"]');
     let lightBoxfocusableContent = lightboxModal.querySelectorAll(lightBoxfocusableElements);
     let lightBoxlastFocusableElement = lightBoxfocusableContent[lightBoxfocusableContent.length - 1];
-    // }
 
-
-
-
-
-    document.addEventListener("keydown", (e) => {
-        let isTabPressed = e.key === "Tab";
-        let isEscapePressed = e.key === "Escape"
-        let isRightArrow = e.key === ""
+   
+    document.addEventListener("keydown", (event) => {
+        let isTabPressed = event.key === "Tab";
+        let isEscapePressed = event.key === "Escape";
 
         if (isEscapePressed) {
-            closeLightboxModal();
+            if (lightboxModal.style.display === 'block') {
+                closeLightboxModal();
+            }            
         }
         if (!isTabPressed) {
             return;
         }
-
-        if (e.shiftKey) {
+        if (event.shiftKey) {
             if (document.activeElement === lightBoxfirstFocusableElement) {
                 lightBoxlastFocusableElement.focus();
-                e.preventDefault();
+                event.preventDefault();
             }
-        } else { 
+        } else {
             if (document.activeElement === lightBoxlastFocusableElement) {
                 lightBoxfirstFocusableElement.focus();
-                e.preventDefault();
+                event.preventDefault();
             }
         }
     });
-
- 
-
-}, 500);
+});
