@@ -1,121 +1,112 @@
-//****** open and close modal ******
-// const photographerName = document.querySelector(".photographerName");
-// const contactButton = document.querySelector("#contactButton");
-// const contactModal = document.querySelector("#contactModal");
-// const pagePhotographerName = document.querySelector("#pagePhotographerName");
-contactButton.addEventListener("click", displayModal);
-function displayModal() {   
-    // const photographerName = document.querySelector(".photographerName")
+//== open and close modal 
 
-    contactModal.style.display = "block";
-    firstFocusableElement.focus();
-    // const contactModalTitle = document.createElement('h2');
-    // const formContainer = document.querySelector("#formContainer")
-    // contactModalTitle.innerText = `Contactez-moi <br>${pagePhotographerName}`
-    formBanner.append(pagePhotographerName);
-}
-function closeModal() {
-    textsContentBox.prepend(pagePhotographerName)
+window.addEventListener('load', () => {
+  /** 
+ * added a event delegation to debug firefox, in error with the button listener.
+ * article src : https://medium.com/@shanyavermaofficial/what-is-event-delegation-in-javascript-52fd9e7323a0
+ */
+  document.body.addEventListener('click', function(event) {
+    
+    if (event.target.id === 'contactButton') {
+        displayModal();
+    }
+});
+ 
+  
+  
+  function displayModal() {   
+      const formContainer = document.querySelector('#formContainer');
+      formContainer.classList.remove("messageIsSent");
+      formContainer.classList.contains("messageIsSent") ? formContainer.classList.remove("messageIsSent") : null;
+      contactModal.style.display = "block";
+      firstFocusableElement.focus();
+      formBanner.append(pagePhotographerName);
+  }
+  });
+
+function closeContactModal() {
+  // replace photographer name in pagePhotographerName
+  if (typeof pagePhotographerName !== 'undefined') {
+    textsContentBox.prepend(pagePhotographerName);
+  }  
     contactModal.style.display = "none";
 }
 
-//****** keyboard navigation ****** 
+//== keyboard navigation 
 
-// const closeContactFormBtn = document.querySelector('#closeContactFormBtn');
-// const submitBtn= document.querySelector('#submitBtn');
-
-closeContactFormBtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      closeModal();
+closeContactFormBtn.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      closeContactModal();
     }
   });
   
-  closeContactFormBtn.addEventListener('click', closeModal);
+  
+closeContactFormBtn.addEventListener('click', closeContactModal);
 
 const submitBtn= document.querySelector('#submitBtn');
  
 const form = document.querySelector("form");
 
-// const closeBtn = document.querySelector('#closeBtn');
-// const submitBtn= document.querySelector('#submitBtn');
 
-closeContactFormBtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      closeModal();
-    }
-  });
+closeContactFormBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeContactModal() : null);
   
-closeContactFormBtn.addEventListener('click', closeModal);
+closeContactFormBtn.addEventListener('click', closeContactModal);
 
-// const submitBtn= document.querySelector('#submitBtn');
- 
-// const form = document.querySelector("form");
-form.addEventListener('submit', (e) => e.preventDefault());
+ //== keyboard navigation : 
+  
+
+form.addEventListener('submit', (event) => event.preventDefault());
+
 const focusableElements = 'button, input, select, textarea, [tabindex="0"]';
-// let modal = document.querySelector('#modal'); // Assurez-vous que 'modal' est bien défini
-// console.log("modal : ", modal);
-
-let firstFocusableElement = contactModal.querySelector('[tabindex="0"]'); // Utilise'querySelector' pour le premier élément
+let firstFocusableElement = contactModal.querySelector('[tabindex="0"]');
 let focusableContent = contactModal.querySelectorAll(focusableElements);
 let lastFocusableElement = focusableContent[focusableContent.length - 1];
-// }
+
+document.addEventListener('keydown', (event) => {
+  let isTabPressed = event.key === 'Tab';
+  let isEscapePressed = event.key === "Escape";
+  let isShiftTabPressed = event.shiftKey && event.key === 'Tab';
 
 
-
-
-
-document.addEventListener('keydown', (e) => {
-  let isTabPressed = e.key === 'Tab';
-  let isEscapePressed = e.key === "Escape"
-
-  if (isEscapePressed) {
-    closeModal();
+if (isEscapePressed) {
+  closeContactModal();
+} else if (isShiftTabPressed) { 
+  if (document.activeElement === firstFocusableElement) {
+    lastFocusableElement.focus(); 
+    event.preventDefault();
   }
-  if (!isTabPressed) { 
-    return; 
+} else if (isTabPressed) {
+  if (document.activeElement === lastFocusableElement) { 
+    firstFocusableElement.focus(); 
+    event.preventDefault();
   }
+}
+});
 
-  if (e.shiftKey) { 
-    if (document.activeElement === firstFocusableElement) {
-      lastFocusableElement.focus(); 
-      e.preventDefault();
-    }
-  } else { // if tab key is pressed
-    if (document.activeElement === lastFocusableElement) { 
-      firstFocusableElement.focus(); 
-      e.preventDefault();
-    }
+closeContactFormBtn.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    closeContactModal();
   }
 });
 
-closeContactFormBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    closeModal();
-  }
-});
+closeContactFormBtn.addEventListener('click', closeContactModal);
 
 
-closeContactFormBtn.addEventListener('click', closeModal);
-
-// submitBtn.addEventListener('click', (e) => e.preventDefault());
-
-
-// function closeModal() {
-//   modal.style.display = 'none';
-// }
-
-
-//****** form's fields validation  ******
+//== form's fields validation  
 
 let firstNameIsValid;
 let lastNameIsValid;
 let emailIsValid;
 let messageIsValid;
 let AllInputsValidated = false;
+const formContainer = document.querySelector('#formContainer');
+
+//-- - - - - RegExs 
 const nameFieldsRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ-]{2,}/;
 const emailFieldRegex = /^[\w_-]+@[\w-]+\.[a-z]{2,4}$/;
 const messageFieldRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ- ,.;]{5,}/;
 
+//-- - - - -  functions
 
 
 function requiredFieldsInspection() {
@@ -130,25 +121,21 @@ function requiredFieldsInspection() {
                     isValid = requiredField.value.match(nameFieldsRegex);
                     errorMessage = "Le prénom doit comporter au moins deux lettres";
                     isValid ? firstNameIsValid = true : firstNameIsValid = false;
-                            // console.log("firstNameIsValid:", firstNameIsValid);
                     break;
                 case "lastName":
                     isValid = requiredField.value.match(nameFieldsRegex);
                     errorMessage = "Le nom doit comporter au moins deux lettres";
-                    // lastNameIsValid = isValid;
                     isValid ? lastNameIsValid = true : lastNameIsValid = false;
 
                     break;
                 case "email":
                     isValid = requiredField.value.match(emailFieldRegex);
                     errorMessage = "Cette adresse email n'est pas valide";
-                    // emailIsValid = isValid;
                     isValid ? emailIsValid = true : emailIsValid = false;
                     break;
                 case "message":
                     isValid = requiredField.value.match(messageFieldRegex);
                     errorMessage = "Le message doit comporter au moins 5 caractères";
-                    // messageIsValid = isValid;
                     isValid ? messageIsValid = true : messageIsValid = false;
 
             }
@@ -164,10 +151,10 @@ function requiredFieldsInspection() {
 
 function requiredFieldErrorIndication(requiredField, errorSpanId, errorMessage) {
     resetfieldErrorIndication(requiredField, errorSpanId);
-    // requiredField.style.border = 'solid 2px red';    
     requiredField.classList.add("errorBorder")    
     let errorSpan = document.createElement('span');
     errorSpan.setAttribute('id', errorSpanId);
+    errorSpan.setAttribute('tabindex', 0);
     errorSpan.textContent = errorMessage;
     requiredField.parentNode.appendChild(errorSpan);
 }
@@ -181,55 +168,81 @@ function resetfieldErrorIndication(requiredField, errorSpanId) {
 
 function btnSubmitActivation() {
     AllInputsValidated = firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid;
-            // console.log("AllInputsValidated:", AllInputsValidated);
-    // const form = document.querySelector('form');
     if (AllInputsValidated) {
-        // form.querySelector('#submitBtn').removeAttribute("disabled");
         submitBtn.removeAttribute("disabled", "");
-        submitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+        submitBtn.addEventListener('click', (event) => {
+          event.preventDefault();
             createRegistrationIsConfirmed();
-            // console.log("données du formulaire \n Prénom : " +  firstName.value + "\n Nom : " + lastName.value + "\n Email : " + email.value + "\n Message : ", message.value);
         });
     } else {
-        // form.querySelector('#submitBtn').setAttribute("disabled", "");
         submitBtn.setAttribute("disabled", "");
     }
 }
+
 function createRegistrationIsConfirmed() {
-    // écriture d'un console.log
     if (AllInputsValidated){
-    console.log("données du formulaire \n Prénom : " +  firstName.value + "\n Nom : " + lastName.value + "\n Email : " + email.value + "\n Message : ", message.value);
+      if ((typeof firstName.value && typeof lastName.value && typeof email.value && typeof message.value) !== undefined ) {
+        console.log("données du formulaire \n Prénom : " +  firstName.value + "\n Nom : " + lastName.value + "\n Email : " + email.value + "\n Message : ", message.value);}
     }
 
     if (AllInputsValidated){
 
-        // sélection du corps de la modale
-        let formContainer = document.querySelector('#formContainer');
-        // supression du formulaire de saisie
         const form = document.getElementById('form');
         if (form) {
             formContainer.removeChild(form);
+            formContainer.classList.add("messageIsSent")
         }
-        // insertion du message de confirmation
         formContainer.innerHTML = '<h2>Message<br>envoyé !</h2>';
-        formContainer.style.minHeight = '850px';
-        formContainer.style.textAlign = 'center';
-        formContainer.style.display = 'flex';
-        formContainer.style.flexDirection = 'column';
-        formContainer.style.justifyContent = "center";
-        formContainer.style.alignItems = "center";
-        // insertion du bouton de fermeture
+
         const confirmationCloseBtn = document.createElement('button');
         confirmationCloseBtn.textContent = "Fermer";
-        confirmationCloseBtn.classList.add('btn-submit');
-        confirmationCloseBtn.classList.add('button');
-        confirmationCloseBtn.style.position = 'absolute';
-        confirmationCloseBtn.style.bottom = '25px';
+        confirmationCloseBtn.classList.add('ctcFormBtn');
         confirmationCloseBtn.setAttribute = 'tabindex="0"';
         formContainer.appendChild(confirmationCloseBtn);
+        confirmationCloseBtn.focus();
+
+        
+
+          window.addEventListener('keydown', (event) => {
+          let isPressed = event.key;
+          switch (isPressed) {
+
+            case 'Tab' :
+              event.preventDefault();
+              confirmationCloseBtn.focus();
+            break;
+
+            case 'Tab && event.shiftKey' :
+              event.preventDefault();
+              confirmationCloseBtn.focus();
+              document.write
+            break;
+
+            case 'Enter' :
+              confirmationCloseBtn.focus();
+              location.reload();
+            break;
+
+            case 'Escape':
+              event.preventDefault();
+              location.reload();
+              try {
+                if (confirmationCloseBtn) {
+                    confirmationCloseBtn.focus();
+                }
+            } catch (error) {
+                console.log("Esc est sans effet sur la navigation, presser 'Enter'");
+            }
+            return;
+
+            default :
+          }
+
+        });
+
         confirmationCloseBtn.addEventListener('click', () => location.reload() );
 
     }
 }
+
 requiredFieldsInspection();
