@@ -1,17 +1,3 @@
-
-
-// class MediaFactory {
-//     static createMediaCard(media) {
-//         const{ image, video } = media;
-//         if(image) {
-//             return createPhotoCard(media);
-//         } else if(video) {
-//             return createVideoCard(media);
-//         } else {
-//             throw newError('Invalid media type');
-//         }
-//     }
-// }
 class MediaFactory {
     static createMediaCard(media) {
         const { image, video } = media;
