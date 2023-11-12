@@ -1,0 +1,98 @@
+/*== LightBox */
+
+#lightboxModal {
+    z-index: 6;
+    position: fixed;
+    display:none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vw;
+    padding: 2vh 2vw;
+    background-color: var(--white-color);
+}
+
+.lightboxContainer {
+    position: relative;
+    width: -moz-fit-content;
+    width:fit-content;
+    height: 99vh;
+    margin: auto;
+    overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#previousBtn,
+#nextBtn, 
+.closeBtn {
+    border: 1px solid transparent;
+    width: 100px;
+    height: 100%;
+    padding: 10px 10px;
+    background:transparent;
+    cursor: pointer;
+}
+
+#previousBtn:focus,
+#nextBtn:focus, 
+.closeBtn:focus {
+    outline: none;
+}
+
+
+#previousBtn {
+    text-align: right; 
+}
+
+#nextBtn {
+    text-align: left;   
+}
+
+#closeLightBoxBtn {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    height: 50px;
+    text-align: left;
+}
+
+#previousBtn i,
+#nextBtn i, 
+.closeBtn i {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    color: var(--secondary-color);
+    background-color:transparent;
+    font-size: 45px;
+    line-height: 60px;
+    text-align:center;
+}
+
+#previousBtn:focus i,
+#nextBtn:focus i, 
+.closeBtn:focus i {    
+    background-color: var(--secondary-color);
+    color:var(--white-color);
+}
+
+
+.lightboxFigure {
+    transform: translateY(-3rem);
+    margin: auto;
+}
+
+.lightboxCaption h2 {
+    color:var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.lightboxFigure img,
+.lightboxFigure video {
+    max-height: calc(90vh - 6rem);
+    max-width: 100%;
+    margin: auto;
+}
