@@ -39,9 +39,11 @@ window.addEventListener('load', () => {
     let img = lightboxModal.querySelector('img');
     let lightboxTitle = lightboxModal.querySelector(".lightboxTitle");
 
-    function closeLightboxModal() {
+    function closeLightboxModal(eventCause) {
         lightboxModal.style.display = 'none';
-        escapeLink.focus();
+        eventCause === 'isKeyPressed'? escapeLink.focus():null;
+
+
     }
 
     //-- open ligthbox
@@ -50,7 +52,7 @@ window.addEventListener('load', () => {
 
         media.addEventListener('click', () => {
             currentIndex = index;
-            console.log("currentIndex clic:",currentIndex);
+            // console.log("currentIndex clic:",currentIndex);
             setMediaType();
             lightboxModal.style.display = 'block';
             lightBoxfirstFocusableElement.focus();
@@ -102,7 +104,7 @@ window.addEventListener('load', () => {
     
     // *don't go out of the modal  
 
-    closeLightBoxBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeLightboxModal() : null);
+    closeLightBoxBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeLightboxModal('isKeyPressed') : null);
     closeLightBoxBtn.addEventListener('click', closeLightboxModal);
     const lightBoxfocusableElements = 'button, [tabindex="0"]';
 
@@ -117,7 +119,7 @@ window.addEventListener('load', () => {
 
         if (isEscapePressed) {
             if (lightboxModal.style.display === 'block') {
-                closeLightboxModal();
+                closeLightboxModal('isKeyPressed');
             }            
         }
         if (!isTabPressed) {

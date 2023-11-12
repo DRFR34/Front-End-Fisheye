@@ -24,19 +24,22 @@ window.addEventListener('load', () => {
   }
   });
 
-function closeContactModal() {
+function closeContactModal(eventCause) {
   // replace photographer name in pagePhotographerName
   if (typeof pagePhotographerName !== 'undefined') {
     textsContentBox.prepend(pagePhotographerName);
   }  
     contactModal.style.display = "none";
+    const escapeLink = document.querySelector('#escapeLink')
+    eventCause === 'isKeyPressed'? escapeLink.focus() : null ;
+    
 }
 
 //== keyboard navigation 
 
 closeContactFormBtn.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      closeContactModal();
+      closeContactModal('isKeyPressed');
     }
   });
   
@@ -48,7 +51,7 @@ const submitBtn= document.querySelector('#submitBtn');
 const form = document.querySelector("form");
 
 
-closeContactFormBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeContactModal() : null);
+closeContactFormBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeContactModal('isKeyPressed') : null);
   
 closeContactFormBtn.addEventListener('click', closeContactModal);
 
@@ -69,7 +72,7 @@ document.addEventListener('keydown', (event) => {
 
 
 if (isEscapePressed) {
-  closeContactModal();
+  closeContactModal('isKeyPressed');
 } else if (isShiftTabPressed) { 
   if (document.activeElement === firstFocusableElement) {
     lastFocusableElement.focus(); 
@@ -85,7 +88,7 @@ if (isEscapePressed) {
 
 closeContactFormBtn.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    closeContactModal();
+    closeContactModal('isKeyPressed');
   }
 });
 
