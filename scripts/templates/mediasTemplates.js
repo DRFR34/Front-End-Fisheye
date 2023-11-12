@@ -7,7 +7,7 @@ class PhotoCard {
         this.photoCard.className = 'mediaCard photoCard';
         this.photoCard.innerHTML = ` 
             <div class ="mediaBox photoBox">           
-                <img class="media image" tabindex="0" alt="${title}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${image}" alt="Photo intitulée${title}" >      
+                <img class="media image" tabindex="0" alt="Photo intitulée : ${title}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${image}" >      
             </div>
             <div class="mediaInfos">
                 <h3>${title}</h3>
@@ -30,7 +30,8 @@ class VideoCard {
         this.videoCard.className = 'mediaCard videoCard';
         this.videoCard.innerHTML = `
             <div class="mediaBox videoBox">
-                <video class="media video" src="./assets/fisheye_photos/sample_photos/${photographerId}/${video}" aria-label="video intitulée ${title}" tabindex="0">video intitulée ${title} </video>
+                <video class="media video" src="./assets/fisheye_photos/sample_photos/${photographerId}/${video}" aria-label="video intitulée ${title}" tabindex="0"> 
+                </video>
             </div>
             <div class="mediaInfos">
                 <h3>${title}</h3>
