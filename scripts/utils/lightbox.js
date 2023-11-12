@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
     let mediasSrcArray = Array.from(medias).map(media => media.currentSrc);
     let mediasTitles = Array.from(titles).map(h3 => h3.innerText);
     let currentIndex = 0;
-    let lightboxModal = document.createElement("section");
+    let lightboxModal = document.createElement("div");
     lightboxModal.id = "lightboxModal";
 
     //== Modal injection in DOM 
@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
         <figure class ="lightboxFigure" tabindex="-1">
             <img src="" alt="" tabindex="-1">
             <figcaption class="lightboxCaption" tabindex="-1">
-                <h2 class="lightboxTitle" tabindex="0" ></h2>
+                <h2 class="lightboxTitle" tabindex="0" >texte dynamique</h2>
             </figcaption>
         </figure>
 
