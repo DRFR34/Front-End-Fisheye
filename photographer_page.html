@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <link href="./css/style.css" rel="stylesheet" type="text/css" />
-  <link href="./css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+  <link href="./css/photographer.css" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -29,14 +29,14 @@
       <a href="./index.html" aria-label="Logo de fish-eye cliquez pour aller à la page d'accueil" tabindex="0"><img
           id="photographerPageLogo" class="logo" src="assets/images/logo.png" alt="logo de Fish eye"></a>
     </nav>
-    <section id="photographerHeader" class="photographerHeader">
-    </section>
+    <div id="photographerHeader" class="photographerHeader" role="banner">
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
     <section id="portfolioSorters">
       <h2>Trier Par</h2>
-      <div id="sortingDropdown" aria-label="Menu déroulant de tri " aria-haspopup="true" tabindex="0">
+      <div id="sortingDropdown" role="combobox" aria-haspopup="true" aria-expanded="false" aria-label="Menu déroulant de tri"  tabindex="0">
         <menu id="sortingList" title="liste des options de tri" role="listbox"  tabindex="-1">
           <li id="liPopularite" role="option" tabindex="0" aria-label="trier les photos par popularité">Popularité</li>
           <li id="liDate" role="option" tabindex="0" aria-label="trier les photos par date">Date</li>
@@ -62,8 +62,8 @@
 
   <!--   Contact modal & form -->
   <div id="contactModal" role="dialog">
-    <div id="formContainer" tabindex="-1">
-      <div id="formBanner">
+    <div id="formContainer" role="group" tabindex="-1">
+      <div id="formBanner" role="banner">
         <h2>Contactez-moi<br></h2>
       </div>
       <form id="form" name="contact" action="index.html" method="get" novalidate>
