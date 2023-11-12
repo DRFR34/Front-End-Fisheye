@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
 
     function closeLightboxModal(eventCause) {
         lightboxModal.style.display = 'none';
-        eventCause === 'isKeyPressed'? escapeLink.focus():null;
+        eventCause === 'isKeyPressed'? escapeLink.focus() : null;
 
 
     }
