@@ -8,7 +8,7 @@
     photographerArticle.innerHTML = `            
         <a class="photographerPageLink" aria-label="Portrait de ${name} et lien vers sa page" href="./photographer_page.html?id=${id}" tabindex="0">
             <div class="portraitBox" >
-                <img class="photographerPortrait" src="./assets/fisheye_photos/sample_photos/photographers_id_photos/${portrait}" alt="Portrait du, ou de la photographe" tabindex="-1">
+                <img class="photographerPortrait" src="./assets/fisheye_photos/sample_photos/photographers_id_photos/${portrait}" alt="Portrait de ${name}" tabindex="-1">
             </div>
             <h2 class="photographerName" aria-label="Nom du photographe:${name}" tabindex="-1">${name}</h2>
         </a>
