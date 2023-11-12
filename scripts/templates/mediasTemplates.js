@@ -15,7 +15,7 @@ class PhotoCard {
                 <div class="likesContainer">
                     <span class="invisible">Nombre de mentions j'aime :</span>
                     <p class="mediaLikes" aria-label="Nombre de mentions j'aime : ${likes}" tabindex="0" >${likes}</p>
-                    <i class="cardLikesHeart fa-regular fa-heart" tabindex="0" aria-label="Cliquez pour ajouter une mention j'aime"></i>            
+                    <i class="cardLikesHeart fa-regular fa-heart" tabindex="0" role="img" aria-label="Cliquez pour ajouter une mention j'aime"></i>            
                 </div>
             </div>           
              `;
@@ -38,7 +38,7 @@ class VideoCard {
                     <span class=" mediaDate">${date}</span>
                     <span class="invisible">Nombre de mentions j'aime :</span>
                     <p class="mediaLikes" aria-label="Nombre de mentions j'aime ${likes}">${likes}</p>
-                    <i class="cardLikesHeart fa-regular fa-heart" aria-label="Cliquez pour ajouter une mention j'aime"></i>
+                    <i class="cardLikesHeart fa-regular fa-heart" role="img" aria-label="Cliquez pour ajouter une mention j'aime"></i>
                 </div>
             </div>
         `;
