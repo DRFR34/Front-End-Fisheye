@@ -274,7 +274,7 @@ h1 {
 
 #sortingList:focus,
 #sortingList:hover {
-    outline: 1px solid var(transparent) !important;
+    outline: 1px solid transparent;
 }
 
 #sortingList li{
