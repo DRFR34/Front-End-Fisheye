@@ -2,7 +2,6 @@
 
 const sortingDropdown = document.querySelector('#sortingDropdown');
 let sortingListItems = document.querySelectorAll('#sortingList > li');
-console.log("sortingListItems ",sortingListItems);
 const toggleDropdownDisplay = function() {sortingDropdown.classList.toggle('sortingDropdownIsActive')}
 let clickedOption = null;
 
