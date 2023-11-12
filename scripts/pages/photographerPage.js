@@ -4,6 +4,17 @@ const urlSearch = window.location.search;
 const urlParams = new URLSearchParams(urlSearch);
 const urlId = urlParams.get('id');
 
+//== visual improvement if key navigation with class keyboardFocus (CSS)  
+
+document.body.addEventListener('keydown', function() {
+    document.body.classList.add('keyboardFocus');
+  });
+  
+  document.body.addEventListener('mousedown', function() {
+    document.body.classList.remove('keyboardFocus');
+  });
+
+
 //== functions 
 
 async function getPhotographersData() {

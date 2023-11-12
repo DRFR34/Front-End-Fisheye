@@ -24,7 +24,8 @@ a {
     text-decoration: none;
 }
 
-*:focus {outline: 2px solid var(--secondary-color); }
+.keyboard-focus:focus {outline: 2px solid var(--secondary-color); }
+
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -99,7 +100,7 @@ h1 {
     flex-direction: column;    
 }
 
-.photographerArticle:focus-within {
+.keyboardFocus main .photographersSection .photographerArticle:focus-within {
     outline: 2px dashed var(--tertiary-color);
 }
 
@@ -159,7 +160,7 @@ h1 {
 /*-- Header */
 .photographerHeader {
     position: relative;
-    height: 300px;-
+    height: 300px;
 }
 
 .photographerBanner {
@@ -307,14 +308,18 @@ h1 {
 
 /* medias cards */
 
+.keyboardFocus main #portfolioSection #mediaDisplayGrid .mediaCard:focus-within {
+    outline: 2px dashed var(--tertiary-color);
+}
+
 .mediaCard{
     margin: auto;
     width: 354px;
 }
 
-.mediaCard:focus-within {    
+/* .mediaCard:focus-within {    
     outline: 2px dashed var(--tertiary-color);
-}
+} */
 
 .mediaBox {
     width: 350px;
