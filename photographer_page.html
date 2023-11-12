@@ -34,11 +34,10 @@
   </header>
 
   <main id="main" tabindex="-1">
-    </section>
     <section id="portfolioSorters">
       <h2>Trier Par</h2>
       <div id="sortingDropdown" aria-label="Menu déroulant de tri " aria-haspopup="true" tabindex="0">
-        <menu id="sortingList" title="liste des options de tri" role="listbox" tabindex="-1">
+        <menu id="sortingList" title="liste des options de tri" role="listbox"  tabindex="-1">
           <li id="liPopularite" role="option" tabindex="0" aria-label="trier les photos par popularité">Popularité</li>
           <li id="liDate" role="option" tabindex="0" aria-label="trier les photos par date">Date</li>
           <li id="liTitre" role="option" tabindex="0" aria-label="trier lesphotos par titre">Titre</li>
@@ -48,21 +47,21 @@
         </div>
       </div>
     </section>
-    <section id="portfolioSection">
-      <div id="mediaDisplayGrid" tabindex="-1">
+    <div id="portfolioSection" role="main">
+      <div id="mediaDisplayGrid" role="grid" tabindex="-1">
       </div>
-      <aside id="priceAndTotalLikesBox" role="complementary" tabindex="0">
+      <aside id="priceAndTotalLikesBox" tabindex="0">
         <div id="totalLikesBox">
           <span id="totalLikes"> </span>
           <span id="totalLikesIco"><i class="fa-solid fa-heart"></i></span>
         </div>
         <span id="priceBox"></span>
       </aside>
-    </section>
+    </div>
   </main>
 
   <!--   Contact modal & form -->
-  <div id="contactModal">
+  <div id="contactModal" role="dialog">
     <div id="formContainer" tabindex="-1">
       <div id="formBanner">
         <h2>Contactez-moi<br></h2>
