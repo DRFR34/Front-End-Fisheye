@@ -190,21 +190,32 @@ function createRegistrationIsConfirmed() {
 
     if (AllInputsValidated){
 
+        // const form = document.getElementById('form');
+        // if (form) {
+        //     formContainer.removeChild(form);
+        //     formContainer.classList.add("messageIsSent")
+        // }
+        // formContainer.innerHTML = '<h2>Message<br>envoyé !</h2>';
+
+        // const confirmationCloseBtn = document.createElement('button');
+        // confirmationCloseBtn.textContent = "Fermer";
+        // confirmationCloseBtn.classList.add('ctcFormBtn');
+        // confirmationCloseBtn.setAttribute = 'tabindex="0"';
+        // formContainer.appendChild(confirmationCloseBtn);
+        // confirmationCloseBtn.focus();
+
         const form = document.getElementById('form');
         if (form) {
             formContainer.removeChild(form);
             formContainer.classList.add("messageIsSent")
         }
-        formContainer.innerHTML = '<h2>Message<br>envoyé !</h2>';
-
-        const confirmationCloseBtn = document.createElement('button');
-        confirmationCloseBtn.textContent = "Fermer";
-        confirmationCloseBtn.classList.add('ctcFormBtn');
-        confirmationCloseBtn.setAttribute = 'tabindex="0"';
-        formContainer.appendChild(confirmationCloseBtn);
+        formContainer.innerHTML = `
+        <h2>Message<br>envoyé !</h2>
+        <button id="confirmationCloseBtn" class="ctcFormBtn" aria-labelledby = "confirmationCloseBtnText" tabindex="0">Fermer </button>
+        <span id="confirmationCloseBtnText" class="invisible">Votre message a bien été envoyé. Appuyer sur Entrée ou échappe pour revenir à la page du photographe </span>
+        `; 
+        document.querySelector('#confirmationCloseBtn'),
         confirmationCloseBtn.focus();
-
-        
 
           window.addEventListener('keydown', (event) => {
           let isPressed = event.key;
