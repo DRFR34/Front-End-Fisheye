@@ -28,7 +28,15 @@ a {
     text-decoration: none;
 }
 
-.keyboard-focus:focus {outline: 2px solid var(--secondary-color); }
+
+.keyboardFocus *:focus,
+.keyboardFocus * *:focus,
+.keyboardFocus * * *:focus,
+.keyboardFocus * * * * *:focus {
+    outline: 2px solid var(--secondary-color); 
+}
+
+
 
 
 body {

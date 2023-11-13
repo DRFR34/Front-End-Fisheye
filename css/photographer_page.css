@@ -156,6 +156,13 @@
     outline: 2px dashed var(--tertiary-color);
 }
 
+.keyboardFocus main #portfolioSection #mediaDisplayGrid .mediaCard .mediaBox:focus-within ,
+.keyboardFocus main #portfolioSection #mediaDisplayGrid .mediaCard .mediaBox .media:focus {
+    transform: scale(1.05);
+    z-index: 5;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .mediaCard{
     margin: auto;
     width: 354px;

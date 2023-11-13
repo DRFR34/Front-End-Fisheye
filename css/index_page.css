@@ -39,6 +39,12 @@
     outline: 2px dashed var(--tertiary-color);
 }
 
+.keyboardFocus main .photographersSection .photographerArticle .photographerPageLink:focus {
+    background-color: var(--white-color);
+    transform: scale(1.05);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .photographerPageLink {
     display: flex;
     flex-direction: column;
