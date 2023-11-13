@@ -81,7 +81,8 @@
     height: auto;
     width: auto;
     padding: 0; 
-    
+    background-color: transparent;
+    border: solid 0px transparent;    
 }
 
 #closeContactFormBtn i {
@@ -149,6 +150,15 @@ form textarea {
     padding: 4px;
     font-size: 24px;
 }
+
+form label .invisible {
+    border:solid 0px transparent;
+    background-color: transparent;
+    position :relative;
+    height: 0;
+    width  : 0;
+}
+
 
 form span {
     position: absolute;
