@@ -190,20 +190,6 @@ function createRegistrationIsConfirmed() {
 
     if (AllInputsValidated){
 
-        // const form = document.getElementById('form');
-        // if (form) {
-        //     formContainer.removeChild(form);
-        //     formContainer.classList.add("messageIsSent")
-        // }
-        // formContainer.innerHTML = '<h2>Message<br>envoyé !</h2>';
-
-        // const confirmationCloseBtn = document.createElement('button');
-        // confirmationCloseBtn.textContent = "Fermer";
-        // confirmationCloseBtn.classList.add('ctcFormBtn');
-        // confirmationCloseBtn.setAttribute = 'tabindex="0"';
-        // formContainer.appendChild(confirmationCloseBtn);
-        // confirmationCloseBtn.focus();
-
         const form = document.getElementById('form');
         if (form) {
             formContainer.removeChild(form);
