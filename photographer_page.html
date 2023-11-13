@@ -61,26 +61,26 @@
 
   <!--   Contact modal & form -->
   <div id="contactModal" role="dialog">
-    <div id="formContainer" role="group" tabindex="-1">
+    <div id="formContainer" tabindex="-1">
       <div id="formBanner">
         <h2>Contactez-moi<br></h2>
       </div>
       <form id="form" name="contact" action="index.html" method="get" novalidate>
         <div class="formFieldBox" data-jsSelector="formData">
           <label for="firstName">Prénom</label>
-          <input class="text-control" type="text" id="firstName" name="firstName" tabindex="0" required>
+          <input class="text-control" type="text" id="firstName" name="firstName" autocomplete="off" required tabindex="0">
         </div>
         <div class="formFieldBox" data-jsSelector="formData">
           <label for="lastName">Nom</label>
-          <input class="text-control" type="text" id="lastName" name="lastName" tabindex="0" required>
+          <input class="text-control" type="text" id="lastName" name="lastName" autocomplete="off" required tabindex="0">
         </div>
         <div class="formFieldBox" data-jsSelector="formData">
           <label for="email">E-mail</label>
-          <input class="text-control" type="email" id="email" name="email" tabindex="0" required>
+          <input class="text-control" type="email" id="email" name="email" autocomplete="off" tabindex="0" required>
         </div>
         <div class="formFieldBox" data-jsSelector="formData">
           <label for="message">Votre message</label>
-          <textarea name="message" id="message" cols="50" rows="5" required tabindex="0"></textarea>
+          <textarea name="message" id="message" cols="50" rows="5" autocomplete="off" required tabindex="0"></textarea>
         </div>
         <button id="submitBtn" class="submitBtn ctcFormBtn" type="submit" value="Envoyer" tabindex="0" disabled>Envoyer
         </button>
