@@ -1,29 +1,60 @@
 /*== photographer Page */
 
+/* -- nav */
+
+
+#photographerPageNav {
+    position: relative;
+    padding: 40px 90px;
+}
 
 /*-- Header */
+
 .photographerHeader {
     position: relative;
     height: 300px;
+    padding: 0 90px;
 }
+
 
 .photographerBanner {
     position: relative;
     width: 100%;
-    padding: 30px 50px ;
-    background-color: #fafafa;
+    padding: 55px 50px ;
+    background-color: var(--very-light-grey-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.photographerBanner  .contactButton {
+.photographerBanner .contactButton {
     position: absolute;
     top:50%; 
     left: 50%; 
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     width: auto;
+    padding: 0 15px;
+    font-weight: 600;
 }
+
+
+.photographerBanner .photographerName {
+    color: var(--primary-color); 
+    padding: 20px 0 0 ;
+    font-size: 64px;
+}
+
+.photographerBanner .photographerLocation {
+    font-size: 24px;
+    line-height: 34px;
+    color: var(--secondary-color);
+}
+
+.photographerBanner .photographerTagline {
+    font-size: 18px;
+    line-height: 40px;
+}
+
 
 .photographerInfoBox {
     width: 370px;
@@ -43,12 +74,12 @@
 #portfolioSorters{
     position: relative;
     height: 50px;
-    padding: 0 60px;
+    padding: 20px 90px;
 }
 
 #portfolioSorters h2 {
-    line-height: 50px;
-    font-size: 1rem;
+    line-height: 66px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -57,23 +88,21 @@
 #sortingDropdown {
     position: absolute;
     z-index: 3;
-    left: 150px;
-    top: 0;
+    left: 190px;
+    top: 20px;
     width: 170px;
+    height: 66px;
     border-radius: 5px;
     overflow: hidden;
-    padding: 0 15px;
+    padding: 8px 15px;
     background-color: var(--secondary-color);
     color: white;
-}
-
-#sortingDropdown {
-    height: 49px;
 }
 
 #sortingDropdown:focus, 
 #sortingDropdown:focus-within,
 #sortingDropdown:focus-within #sortingDropdownIconBox {
+    height: 66px;
     background-color: var(--tertiary-color);
     color: var(--black-color);
 }
@@ -97,7 +126,7 @@
 #sortingDropdownIconBox {
     position:absolute;
     right:0;
-    top: 0;
+    top: 8px;
     width: 50px;
     height: 50px;
     padding: 0 15px;
@@ -122,13 +151,20 @@
 }
 
 #sortingList li{
-    padding: 0 0 0 15px;
+    padding: 0 0 0px 15px;
     list-style-type: none;    
     line-height: 50px;
+    font-size: 18px;
+    /* border-bottom: solid 1px white; */
+}
+
+#sortingDropdown:hover #sortingList li,
+#sortingDropdown.sortingDropdownIsActive #sortingList li{
     border-bottom: solid 1px white;
 }
 
-#sortingList li:last-child{    
+#sortingDropdown:hover #sortingList li:last-child ,
+#sortingDropdown.sortingDropdownIsActive #sortingList li:last-child {   
     border-bottom: none;
 }
 
@@ -144,7 +180,7 @@
 
 #mediaDisplayGrid {
     position: relative;
-    padding: 50px 0;
+    padding: 50px 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -185,7 +221,7 @@
 }
 
 .mediaBox .media  {
-    border-radius: 5px;
+    border-radius: 8px;
     aspect-ratio: 1/1;
     width: 100%;
     object-fit: cover;
@@ -199,6 +235,10 @@
     display: flex;
     justify-content: space-between;
     color: var(--secondary-color);
+}
+
+.mediaInfos h3{
+    font-size: 24px;
 }
 
 .mediaDate {    
@@ -217,10 +257,14 @@
     display: flex;
     align-items: center;
 }
+ 
+.mediaLikes {
+    font-size: 24px;
+}
 
 .cardLikesHeart {
     padding: 0 0 0 5px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
  /*-- floating box */
@@ -228,9 +272,10 @@
 #priceAndTotalLikesBox {
     position: fixed;
     bottom: 0;
-    right: calc(((100vw - 1440px)/2) + 0px);   
-    width: 300px;
-    height: 50px;
+    right: calc(((100vw - 1440px)/2) + 25px);   
+    width: 370px;
+    height: 70px;
+    border-radius: 8px;
     padding: 0 25px;
     background-color: var(--tertiary-color); 
     display: flex;
@@ -242,12 +287,14 @@
     height: 50px;
     padding: 0 10px 0 0;
     line-height: 50px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 #totalLikesIco {
     width: 100px;
     height: 50px;
-    font-size: 16px;
+    font-size: 20px;
     color: var(--black-color);
     line-height: 50px;
 }
@@ -255,10 +302,12 @@
 #priceBox {
     height: 50px;
     line-height: 50px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 #priceBox::after {
-    content: "€ /jour";
+    content: "€ / jour";
     color: var(--black-color);
     line-height: 50px;
 }

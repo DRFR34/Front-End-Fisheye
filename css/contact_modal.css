@@ -8,7 +8,8 @@
     height: 100%;
     width: 100%;
     display: none;
-    background-color: var(--white-color);
+    /* background-color: var(--white-color); */
+    background-color: rgba(128, 128, 128, 0.24);
 }
 
 .contactButton,
