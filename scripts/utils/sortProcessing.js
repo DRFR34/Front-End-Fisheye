@@ -26,7 +26,6 @@ sortingDropdown.addEventListener('keydown', (event) => {
                 event.preventDefault();
                 if(event.shiftKey) {
                     const portrait = document.querySelector('.photographerPortrait');
-                    console.log("portrait:", portrait);
                     portrait.focus();
                 } else { 
                 firstMedia.focus(); 

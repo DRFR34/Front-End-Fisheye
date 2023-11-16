@@ -51,8 +51,7 @@ window.addEventListener('load', () => {
     medias.forEach((media, index) => {
 
         media.addEventListener('click', () => {
-            currentIndex = index;
-            // console.log("currentIndex clic:",currentIndex);
+            // currentIndex = index;
             setMediaType();
             lightboxModal.style.display = 'block';
             lightBoxfirstFocusableElement.focus();
@@ -60,9 +59,8 @@ window.addEventListener('load', () => {
 
         media.addEventListener('keydown', (event) => {            
             if (event.key === 'Enter') {
-                event.preventDefault()
-                currentIndex = index;
-                console.log("currentIndex enter:",currentIndex);
+                event.preventDefault();
+                // currentIndex = index;
                 setMediaType();
                 lightboxModal.style.display = 'block';
                 lightBoxfirstFocusableElement.focus();
