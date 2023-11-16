@@ -12,8 +12,16 @@ document.body.addEventListener('keydown', function() {
   
   document.body.addEventListener('mousedown', function() {
     document.body.classList.remove('keyboardFocus');
+    sortingDropdown.classList.remove('sortingDropdownIsActive')
   });
 
+
+  const escapeLink = document.querySelector('#escapeLink');
+  escapeLink.addEventListener('keydown', (event) =>{ 
+    event.preventDefault;
+   !event.key === 'Enter' ? null: sortingDropdown.focus()
+});
+  
 
 //== functions 
 
