@@ -2,17 +2,6 @@
 
 window.addEventListener('load', () => {
 
-  const pagePhotographerName = document.querySelector('#pagePhotographerName');
-        console.log("pagePhotographerName", pagePhotographerName);
-        console.log("pagePhotographerName innerText", pagePhotographerName);
-
-  const contactFormPhotographerName = document.createElement('h2');
-  contactFormPhotographerName.innerText= pagePhotographerName.innerText;
-  contactFormPhotographerName.setAttribute('id', "contactFormPhotographerName");
-  formBanner.append(contactFormPhotographerName)
-
-        console.log("contactFormPhotographerName :", contactFormPhotographerName);
-
   /** 
  * added a event delegation to debug firefox, in error with the button listener.
  * article src : https://medium.com/@shanyavermaofficial/what-is-event-delegation-in-javascript-52fd9e7323a0
@@ -22,24 +11,33 @@ window.addEventListener('load', () => {
     
     
     if (event.target.id === 'contactButton') {
-        displayModal();
+        displayContactModal();
     }
 });
  
   
   
-  function displayModal() {   
+  function displayContactModal() {   
+
+
       const formContainer = document.querySelector('#formContainer');
       formContainer.classList.remove("messageIsSent");
       formContainer.classList.contains("messageIsSent") ? formContainer.classList.remove("messageIsSent") : null;
       contactModal.style.display = "block";
-      
+
+      const pagePhotographerName = document.querySelector('#pagePhotographerName')
+
+      const contactFormPhotographerName = document.createElement('h2');
+      contactFormPhotographerName.innerText= pagePhotographerName.innerText;
+      contactFormPhotographerName.setAttribute('id', "contactFormPhotographerName");
+      formBanner.append(contactFormPhotographerName);   
       
   }
   });
 
 function closeContactModal(typeOfNav) {
   if (contactModal.style.display === "block"){  
+    formBanner.removeChild(contactFormPhotographerName);  
     contactModal.style.display = "none";
     const escapeLink = document.querySelector('#escapeLink');
     typeOfNav === 'keyNav'? escapeLink.focus() : null ;
