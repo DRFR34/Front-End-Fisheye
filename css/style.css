@@ -32,10 +32,7 @@ a {
 }
 
 
-.keyboardFocus *:focus,
-.keyboardFocus * *:focus,
-.keyboardFocus * * *:focus,
-.keyboardFocus * * * * *:focus {
+.keyboardFocus *:focus {
     outline: 2px solid var(--secondary-color); 
 }
 

@@ -255,7 +255,7 @@
 
 .likesContainer {
     display: flex;
-    align-items: center;
+    align-items: center;    
 }
  
 .mediaLikes {
@@ -265,7 +265,19 @@
 .cardLikesHeart {
     padding: 0 0 0 5px;
     font-size: 20px;
+    cursor: pointer;
 }
+
+.cardLikesHeart:focus {
+    transform: scale(1.5);
+}
+
+.cardLikesHeart:hover {
+    color: var(--secondary-color);
+    transition: 2s;
+}
+
+
 
  /*-- floating box */
 
