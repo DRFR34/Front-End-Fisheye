@@ -1,11 +1,25 @@
 //== open and close modal 
 
 window.addEventListener('load', () => {
+
+  const pagePhotographerName = document.querySelector('#pagePhotographerName');
+        console.log("pagePhotographerName", pagePhotographerName);
+        console.log("pagePhotographerName innerText", pagePhotographerName);
+
+  const contactFormPhotographerName = document.createElement('h2');
+  contactFormPhotographerName.innerText= pagePhotographerName.innerText;
+  contactFormPhotographerName.setAttribute('id', "contactFormPhotographerName");
+  formBanner.append(contactFormPhotographerName)
+
+        console.log("contactFormPhotographerName :", contactFormPhotographerName);
+
   /** 
  * added a event delegation to debug firefox, in error with the button listener.
  * article src : https://medium.com/@shanyavermaofficial/what-is-event-delegation-in-javascript-52fd9e7323a0
  */
   document.body.addEventListener('click', function(event) {
+
+    
     
     if (event.target.id === 'contactButton') {
         displayModal();
@@ -19,27 +33,24 @@ window.addEventListener('load', () => {
       formContainer.classList.remove("messageIsSent");
       formContainer.classList.contains("messageIsSent") ? formContainer.classList.remove("messageIsSent") : null;
       contactModal.style.display = "block";
-      firstFocusableElement.focus();
-      formBanner.append(pagePhotographerName);
+      
+      
   }
   });
 
-function closeContactModal(eventCause) {
-  // replace photographer name in pagePhotographerName
-  if (typeof pagePhotographerName !== 'undefined') {
-    textsContentBox.prepend(pagePhotographerName);
-  }  
+function closeContactModal(typeOfNav) {
+  if (contactModal.style.display === "block"){  
     contactModal.style.display = "none";
-    const escapeLink = document.querySelector('#escapeLink')
-    eventCause === 'isKeyPressed'? escapeLink.focus() : null ;
-    
+    const escapeLink = document.querySelector('#escapeLink');
+    typeOfNav === 'keyNav'? escapeLink.focus() : null ;
+  }    
 }
 
 //== keyboard navigation 
 
 closeContactFormBtn.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      closeContactModal('isKeyPressed');
+      closeContactModal('keyNav');
     }
   });
   
@@ -51,12 +62,9 @@ const submitBtn= document.querySelector('#submitBtn');
 const form = document.querySelector("form");
 
 
-closeContactFormBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeContactModal('isKeyPressed') : null);
+closeContactFormBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeContactModal('keyNav') : null);
   
 closeContactFormBtn.addEventListener('click', closeContactModal);
-
- //== keyboard navigation : 
-  
 
 form.addEventListener('submit', (event) => event.preventDefault());
 
@@ -72,7 +80,7 @@ document.addEventListener('keydown', (event) => {
 
 
 if (isEscapePressed) {
-  closeContactModal('isKeyPressed');
+  closeContactModal('keyNav');
 } else if (isShiftTabPressed) { 
   if (document.activeElement === firstFocusableElement) {
     lastFocusableElement.focus(); 
@@ -88,7 +96,7 @@ if (isEscapePressed) {
 
 closeContactFormBtn.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    closeContactModal('isKeyPressed');
+    closeContactModal('keyNav');
   }
 });
 
