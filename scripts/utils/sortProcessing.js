@@ -75,9 +75,9 @@ sortingListItems.forEach((item) => {
 
 //== functions 
 
-function toggleDropdownDisplay(source) {
+function toggleDropdownDisplay() {
   sortingDropdown.classList.toggle('sortingDropdownIsActive')
-  console.log("sortingDropdown.classList source"+ source + " :", sortingDropdown.classList);
+  // console.log("sortingDropdown.classList source"+ source + " :", sortingDropdown.classList);
 }
 
 function launchSorting (clickedOption){
