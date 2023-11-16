@@ -1,8 +1,10 @@
+window.addEventListener('load', () => {
+
+
 //== variables 
 
 const sortingDropdown = document.querySelector('#sortingDropdown');
 let sortingListItems = document.querySelectorAll('#sortingList > li');
-const toggleDropdownDisplay = function() {sortingDropdown.classList.toggle('sortingDropdownIsActive')}
 let clickedOption = null;
 
 
@@ -23,24 +25,16 @@ sortingDropdown.addEventListener('keydown', (event) => {
             case 'Tab':
                 event.preventDefault();
                 if(event.shiftKey) {
-                    const portrait = document.querySelector('#photographerPortrait');
+                    const portrait = document.querySelector('.photographerPortrait');
+                    console.log("portrait:", portrait);
                     portrait.focus();
                 } else { 
                 firstMedia.focus(); 
                 }                
                 break;
-
-            // case 'Tab' &&  : {
-            //     const portrait = document.querySelector('#photographerPortrait');
-            //     portrait.focus();
-            //     break;
-            // }
             case 'Enter' :{
-
-                //! wip
-                // sortingDropdown.click();
-                sortingDropdown.classList.toggle('sortingDropdownIsActive');
-                // toggleDropdownDisplay();
+                toggleDropdownDisplay('dropDownEnter')
+                // sortingDropdown.classList.toggle('sortingDropdownIsActive');
                 let firstItem = sortingListItems[0];
                 firstItem.focus();
             }
@@ -62,28 +56,45 @@ sortingListItems.forEach((item) => {
           sortingListItems[0].focus();
         }
       } else if (event.key === 'Enter') {
+        event.stopPropagation();
         clickedOption = event.target;
-        launchSorting (clickedOption);
-        event.target.parentElement.parentElement.classList.remove('sortingDropdownIsActive')
-        console.log("sortingDropdown classList after item enter ", sortingDropdown.classList);
-        sortingDropdown.focus()
-        
-
-      } else if (event.key === 'Escape') {
+        toggleDropdownDisplay('itemEnter');
+        launchSorting (clickedOption);  
+      } 
+      else if (event.key === 'Escape') {
         event.preventDefault();
-        toggleDropdownDisplay()
+        toggleDropdownDisplay('itemEscape');
         const firstMedia = mediaDisplayGrid.querySelector('.media');
         firstMedia.focus();
       } 
     });
-  });
+});
+
+
+
 
 //== functions 
+
+function toggleDropdownDisplay(source) {
+  sortingDropdown.classList.toggle('sortingDropdownIsActive')
+  console.log("sortingDropdown.classList source"+ source + " :", sortingDropdown.classList);
+}
 
 function launchSorting (clickedOption){
     cliquedOptionInFirstPosition(clickedOption) ;
     sortMediasCards(clickedOption); 
-    
+    // toggleDropdownDisplay();
+    const firstMedia = mediaDisplayGrid.querySelector('.media');
+    firstMedia.focus();
+    firstMedia.addEventListener('keydown', (event) => {
+      
+      event.stopPropagation();
+      if (!(event.shiftKey && event.key === 'Tab')){
+        return;
+      }
+      event.preventDefault();      
+      sortingDropdown.focus();
+    });
 }
 
 function cliquedOptionInFirstPosition(clickedOption) {
@@ -139,3 +150,5 @@ function sortMediasCards(clickedOption){
             mediaDisplayGrid.appendChild(card)
         });
 }    
+
+});
