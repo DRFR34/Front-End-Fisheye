@@ -8,8 +8,7 @@
     height: 100%;
     width: 100%;
     display: none;
-    /* background-color: var(--white-color); */
-    background-color: rgba(128, 128, 128, 0.24);
+    background-color: var(--translucent-gay-bg-color);
 }
 
 .contactButton,
@@ -62,11 +61,11 @@
 
 #formContainer {
     position: relative;
-    margin: 5% auto;
+    margin: calc((100vh - 975px)/2) auto;
     box-shadow: #00000059 0px 5px 15px;
-    width: 50%;
+    width: 670px;
     border-radius: 5px;
-    padding: 36px;
+    padding: 20px 36px;
     background-color:var(--tertiary-color);
     display: flex;
     flex-direction: column;
@@ -90,7 +89,7 @@
     cursor: pointer;
     background: transparent;
     color: var(--white-color);
-    font-size: 48px;
+    font-size: 64px;
 }
 
 #closeContactFormBtn:hover i,
@@ -102,15 +101,13 @@
 
 #formBanner{
     width: 100%;
-    padding: 0 0 20px 0;
 }
 
-#formBanner h2,
-#formBanner h1 {
-    padding: 0;
-    line-height: 55px;
-    font-size: 48px;
-    font-weight: normal;
+#formBanner h2 {
+    padding: 0 0 10px 0;
+    line-height: 64px;
+    font-size: 64px;
+    font-weight: 500;
     color: var(--black-color);
 }
 
@@ -122,34 +119,9 @@ form {
 }
 
 form label {
-    margin: 10px 0 0;
-    padding: 15px 0 0 0;
+    padding: 25px 0 5px 0;
     color: #312E2E;
-    font-size: 24px;
-}
-
-.formFieldBox {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-}
-
-form input {
-    width: 100%;
-    height: 52px;
-    border: none;
-    border-radius: 5px;
-    padding: 3px 4px 5px;
-    font-size: 24px;
-}
-
-form textarea {
-    width: 100%;
-    border-radius: 5px;
-    padding: 4px;
-    font-size: 24px;
+    font-size: 36px;
 }
 
 form label .invisible {
@@ -160,16 +132,46 @@ form label .invisible {
     width  : 0;
 }
 
+.formFieldBox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+}
+
+.formFieldBox:first-child label {
+    padding: 0;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 4px 5px;
+    font-size: 36px;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 36px;
+}
+
 
 form span {
     position: absolute;
-    bottom: -22px;
+    bottom: -25px;
     width: 100%;
     border: solid 3px var(--secondary-color);
     border-radius: 0 0 5px 5px;
     padding: 3px;
-   color: var(--white-color);
-   background-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    font-size: 20px;
 }
 
 .errorBorder {
