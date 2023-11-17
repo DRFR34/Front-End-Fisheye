@@ -25,12 +25,13 @@ window.addEventListener('load', () => {
       formContainer.classList.contains("messageIsSent") ? formContainer.classList.remove("messageIsSent") : null;
       contactModal.style.display = "block";
 
-      const pagePhotographerName = document.querySelector('#pagePhotographerName')
+      const pagePhotographerName = document.querySelector('#pagePhotographerName');
 
       const contactFormPhotographerName = document.createElement('h2');
       contactFormPhotographerName.innerText= pagePhotographerName.innerText;
       contactFormPhotographerName.setAttribute('id', "contactFormPhotographerName");
-      formBanner.append(contactFormPhotographerName);   
+      formBanner.append(contactFormPhotographerName); 
+      firstFocusableElement.focus();
       
   }
   });
