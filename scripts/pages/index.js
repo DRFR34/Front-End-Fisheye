@@ -8,7 +8,15 @@ document.body.addEventListener('keydown', function() {
   });
 
 //== functions
+
 //-- get array "photographers" in JSON
+
+
+/**
+ * - fetches data from a JSON file and (Asynchronous)
+ * - calls displayData() with the photographers data.
+ * @returns {undefined} 
+ */
 async function getPhotographersData() {   
     fetch("./data/all_data.json")    
         .then((response) => {
@@ -20,7 +28,15 @@ async function getPhotographersData() {
 }
     
 getPhotographersData();
-    
+
+/**
+ * - displays photographers data (Asynchronous)
+ * - creates a photographer card for each photographer and appends it to the photographers section.
+ * @param {Array} photographers - array of Objects photographers data.
+ * @param {Object} photographer - array of photographers data.
+ * @returns {Object} userCardDOM - DOM element
+ * 
+ */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographersSection");
     photographers.forEach((photographer) => {        
