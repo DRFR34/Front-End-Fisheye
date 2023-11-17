@@ -1,37 +1,32 @@
 
 
-class PhotoCard {
-    constructor(data) {
-        const { photographerId, title, image, likes, date } = data;
-        this.photoCard = document.createElement('article');
-        this.photoCard.className = 'mediaCard photoCard';
-        this.photoCard.innerHTML = ` 
-            <div class ="mediaBox photoBox">           
-                <img class="media image" tabindex="0" alt="Photo intitulée : ${title}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${image}" >      
-            </div>
-            <div class="mediaInfos">
-                <h3>${title}</h3>
-                <span class=" mediaDate">${date}</span>
-                <div class="likesContainer">
-                    <span class="invisible">Nombre de mentions j'aime :</span>
-                    <p class="mediaLikes" aria-label="Nombre de mentions j'aime : ${likes}" tabindex="0" >${likes}</p>
-                    <i class="cardLikesHeart fa-regular fa-heart" tabindex="0" role="img" aria-label="Cliquez pour ajouter une mention j'aime"></i>            
-                </div>
-            </div>           
-             `;
-    }
-}
 
-
-class VideoCard {
-    constructor(data) {
-        const { photographerId, title, video, likes, date } = data;
-        this.videoCard = document.createElement('article');
-        this.videoCard.className = 'mediaCard videoCard';
-        this.videoCard.innerHTML = `
-            <div class="mediaBox videoBox">
-                <video class="media video" src="./assets/fisheye_photos/sample_photos/${photographerId}/${video}" aria-label="video intitulée ${title}" tabindex="0"> 
-                </video>
+/**
+ * Abstract Class for DRY code
+ * @abstract
+ * @class
+ */
+class MediaCard {    
+    /**
+     * - Creates a new MediaCard.
+     * @constructor
+     * @param {Object} data - data for the media card.
+     * @param {string} mediaType - type of the media ('img' or 'video').
+     * @param {number} data.photographerId - The ID of the photographer.
+     * @param {string} data.title - title of the media.
+     * @param {number} data.likes - number of likes for the media.
+     * @param {string} data.date - date of media's creation'.
+     * @param {string} data.image - image's file name (if mediaType = 'img').
+     * @param {string} data.video - video's file name (if mediaType = 'video').
+     */
+    constructor(data, mediaType) {
+        const { photographerId, title, likes, date, image, video } = data;
+        this.mediaCard = document.createElement('article');
+        this.mediaCard.className = `mediaCard ${mediaType}Card`;
+        this.mediaCard.innerHTML = `
+            <div class="mediaBox ${mediaType}Box">
+                <${mediaType === 'img' ? 'img' : 'video'} class="media ${mediaType}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${mediaType === 'img' ? image : video}" aria-label="${mediaType} intitulée ${title}" tabindex="0"> 
+                </${mediaType === 'img' ? 'img' : 'video'}>
             </div>
             <div class="mediaInfos">
                 <h3>${title}</h3>
@@ -46,5 +41,33 @@ class VideoCard {
     }
 }
 
+
+/**
+ * instantiated by the MediaFactory class
+ * @class
+ * @extends MediaCard
+ * @constructor
+ * @param {Object} data - data for the video card.
+ * @param {String} img - define mediaType in super constructor
+ */
+class PhotoCard extends MediaCard {
+    constructor(data) {
+        super(data, 'img');
+    }
+}
+
+/**
+     * instantiated by the MediaFactory class
+     * @class
+     * @extends MediaCard
+     * @constructor
+     * @param {Object} data - data for the video card.
+     * @param {String} video - define mediaType in super constructor
+     */
+class VideoCard extends MediaCard {
+    constructor(data) {
+        super(data, 'video');
+    }
+}
 
 
