@@ -16,13 +16,6 @@ document.body.addEventListener('keydown', function() {
   });
 
 
-  const escapeLink = document.querySelector('#escapeLink');
-  escapeLink.addEventListener('keydown', (event) =>{ 
-    event.preventDefault;
-   !event.key === 'Enter' ? null: sortingDropdown.focus()
-});
-  
-
 //== functions 
 
 async function getPhotographersData() {
