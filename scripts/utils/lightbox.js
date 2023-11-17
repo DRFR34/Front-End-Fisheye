@@ -44,8 +44,7 @@ window.addEventListener('load', () => {
         eventCause === 'isKeyPressed'? escapeLink.focus() : null;
     }
 
-    //-- open ligthbox
-
+    //-- open ligthbox, and control focus
     medias.forEach((media, index) => {
 
         media.addEventListener('click', () => {
@@ -78,7 +77,11 @@ window.addEventListener('load', () => {
 
     closeLightBoxBtn.addEventListener('click', closeLightboxModal);
 
-   
+   /**
+ * - checks the type of the current media, and creates the related new video or img element 
+ * - sets the source of the new element to the source of the current media and updates the lightbox title.
+ * -  insert the new element in the lightbox figure.
+ */
     function setMediaType() {
         let isVideo = medias[currentIndex].tagName.toLowerCase() === 'video';
 
@@ -98,7 +101,7 @@ window.addEventListener('load', () => {
 
     //== Modal's keyboard navigation  
     
-    // *don't go out of the modal  
+   
 
     closeLightBoxBtn.addEventListener('keydown', (event) => (event.key === 'Enter') ? closeLightboxModal('isKeyPressed') : null);
     closeLightBoxBtn.addEventListener('click', closeLightboxModal);
@@ -108,7 +111,7 @@ window.addEventListener('load', () => {
     let lightBoxfocusableContent = lightboxModal.querySelectorAll(lightBoxfocusableElements);
     let lightBoxlastFocusableElement = lightBoxfocusableContent[lightBoxfocusableContent.length - 1];
 
-   
+    // keeps the focus on focusable elements in the lightbox
     document.addEventListener("keydown", (event) => {
         let isTabPressed = event.key === "Tab";
         let isEscapePressed = event.key === "Escape";
