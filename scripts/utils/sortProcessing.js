@@ -46,6 +46,14 @@ window.addEventListener('load', () => {
     }
   });
 
+
+  /**
+   *  if 'Tab' || 'shiftKey' &'Tab' : - Loops the focus on list items
+   * if 'Enter' : launch sorting with selected option in param  and close dropdown 
+   * if 'Escape': close dropdown and place focus on the first media
+   * -
+   * @param {Object} item - = ltem in theUl
+   */
   sortingListItems.forEach((item) => {
     item.addEventListener('keydown', (event) => {
       sortingListItems = document.querySelectorAll('#sortingList > li');
@@ -60,14 +68,15 @@ window.addEventListener('load', () => {
           sortingListItems[0].focus();
         }
       } else if (event.key === 'Enter') {
+        //  avoids side effects of bubbling
         event.stopPropagation();
         clickedOption = event.target;
-        toggleDropdownDisplay('itemEnter');
+        toggleDropdownDisplay();
         launchSorting(clickedOption);
       }
       else if (event.key === 'Escape') {
         event.preventDefault();
-        toggleDropdownDisplay('itemEscape');
+        toggleDropdownDisplay();
         const firstMedia = mediaDisplayGrid.querySelector('.media');
         firstMedia.focus();
       }
@@ -86,7 +95,8 @@ window.addEventListener('load', () => {
   /**
    * Media sorting launch function.
    * additional feature : place the focus for next navigation steps
-   *@param {string} clickedOption = option clicked in the dropdown.
+  * @param {Object} clickedOption - = list item clicked in the dropdown.
+} .
    */
   function launchSorting(clickedOption) {
     cliquedOptionInFirstPosition(clickedOption);
@@ -109,8 +119,9 @@ window.addEventListener('load', () => {
   }
 
   /**
-   *Fonction de tri des cartes média.
-   *@param {Object} clickedOption - L'option cliquée pour le tri.
+   *Media card sorting function.
+   * transform the nodeList of all mediaCards into an array and sorts appropriately 
+   *@param {Object} clickedOption - = list item clicked in the dropdown.
    */
   function sortMediasCards(clickedOption) {
 
