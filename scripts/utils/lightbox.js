@@ -42,8 +42,6 @@ window.addEventListener('load', () => {
     function closeLightboxModal(eventCause) {
         lightboxModal.style.display = 'none';
         eventCause === 'isKeyPressed'? escapeLink.focus() : null;
-
-
     }
 
     //-- open ligthbox
@@ -51,7 +49,7 @@ window.addEventListener('load', () => {
     medias.forEach((media, index) => {
 
         media.addEventListener('click', () => {
-            // currentIndex = index;
+            currentIndex = index;
             setMediaType();
             lightboxModal.style.display = 'block';
             lightBoxfirstFocusableElement.focus();
@@ -60,7 +58,7 @@ window.addEventListener('load', () => {
         media.addEventListener('keydown', (event) => {            
             if (event.key === 'Enter') {
                 event.preventDefault();
-                // currentIndex = index;
+                currentIndex = index;
                 setMediaType();
                 lightboxModal.style.display = 'block';
                 lightBoxfirstFocusableElement.focus();
