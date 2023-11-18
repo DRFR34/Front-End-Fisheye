@@ -1,6 +1,5 @@
 //== get the photographer id with URL 
 
-
 /**
  * window.location.search  :  * @returns {String} - query part of the URL
  * 
@@ -21,19 +20,14 @@ document.body.addEventListener('keydown', function() {
     sortingDropdown.classList.remove('sortingDropdownIsActive')
   });
 
-
 //== functions 
 
-
-
-
 /**
- * This asynchronous function fetches photographer data from a JSON file and inserts it into the DOM.
+ * - fetches photographer data from a JSON file and inserts it into the DOM.
  * @async
  * @function getPhotographersData
  * @throws - throw an error if the fetch operation fails.
  */
-
 async function getPhotographersData() {
     try {
         const response = await fetch("./data/all_data.json");
@@ -46,23 +40,29 @@ async function getPhotographersData() {
 
 
 /**
- * - displays the data of the photographer with ID = URL ID
- * - creates the photographer's banner and insert it in DOM
- * @param {Array} photographers - The array of photographers data.
- * @returns {void} This function does not return a value.
+ * - selects medias in photographer[] if match with photographer's ID and inserts them into the DOM.
+ * @function selectAndInsertMediasInDom
+ * @param {Array} photographers - array of photographers data.
+ * @param {media} object - element of medias
+ * @throws {Error} Will throw an error if the creation of the photographerBanner fails.
+ * } 
  */
 function selectAndInsertPhotographerInDom(photographers) {
     const photographersSection = document.querySelector(".photographerHeader");
     photographers.forEach((photographer) => {
         if (photographer.id == urlId) {
-            const photographerBanner = createPhotographerBanner(photographer);
+            try {const photographerBanner = createPhotographerBanner(photographer);
             photographersSection.appendChild(photographerBanner);
+            } catch (error) {
+                console.error(error);
+            }
         }
     });
 }   
 
 /**
- * - fetches media data from  JSON  and inserts it into the DOM.
+ * - fetches media data from  JSON  
+ * - send fetched medias to selectAndInsertMediasInDom() 
  * @async
  * @function getMediasData
  * @throws Will throw an error if the fetch operation fails.
@@ -71,19 +71,27 @@ async function getMediasData() {
     try {
         const response = await fetch("./data/all_data.json");
         const allJsonData = await response.json();
-        selectAndInsertMediaInDom(allJsonData.media);
+        selectAndInsertMediasInDom(allJsonData.media);
     } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
     }
 }
 
-
-function selectAndInsertMediaInDom(media) {
+/**
+ * - selects medias in media[] if match with photographer's ID and inserts them into the DOM.
+ *  - calls : calcTotalOfLikes() ,  voteWithLikes() 
+ * @function selectAndInsertMediasInDom
+ * @param {Array} medias - array of media objects to be displayed.
+ * @param {media} object - element of medias
+ * @throws {Error} Will throw an error if the creation of the media card fails.
+ * } 
+ */
+function selectAndInsertMediasInDom(medias) {
     const mediaDisplayGrid = document.querySelector("#mediaDisplayGrid");
-    media.forEach((medium) => {
-        if (medium.photographerId == urlId) {
+    medias.forEach((media) => {
+        if (media.photographerId == urlId) {
             try {
-                const mediaCard = MediaFactory.createMediaCard(medium);
+                const mediaCard = MediaFactory.createMediaCard(media);
                 mediaDisplayGrid.appendChild(mediaCard);  
             } catch (error) {
                 console.error(error);
