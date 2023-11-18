@@ -268,7 +268,7 @@
     cursor: pointer;
 }
 
-.cardLikesHeart:focus {
+.keyboardFocus .cardLikesHeart:focus {
     transform: scale(1.5);
 }
 
