@@ -25,7 +25,7 @@ class MediaCard {
         this.mediaCard.className = `mediaCard ${mediaType}Card`;
         this.mediaCard.innerHTML = `
             <div class="mediaBox ${mediaType}Box">
-                <${mediaType === 'img' ? 'img' : 'video'} class="media ${mediaType}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${mediaType === 'img' ? image : video}" aria-label="${mediaType} intitulée ${title}" tabindex="0"> 
+                <${mediaType === 'img' ? 'img' : 'video'} class="media ${mediaType}" src="./assets/fisheye_photos/sample_photos/${photographerId}/${mediaType === 'img' ? image : video}" aria-label="${mediaType === 'img' ? 'image' : 'vidéo'} intitulée ${title}" tabindex="0"> 
                 </${mediaType === 'img' ? 'img' : 'video'}>
             </div>
             <div class="mediaInfos">
